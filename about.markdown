@@ -8,7 +8,7 @@ permalink: /about/
 
 #### About Me ####
 
-My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration tester that aims at learning everyday. 
+My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration tester that aims at learning everyday.
 
 ### Certifications ###
 * Certified Ethical Hacker (Master) - 2021
@@ -29,7 +29,7 @@ My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration
 
 #### Sobre Mí ####
 
-Mi nombre es Marta (aka aphr0dite / martabyte) y soy una penetration tester de ciberseguridad que intenta aprender cada día. 
+Mi nombre es Marta (aka aphr0dite / martabyte) y soy una penetration tester de ciberseguridad que intenta aprender cada día.
 
 ### Certificaciones ###
 * Certified Ethical Hacker (Master) - 2021
