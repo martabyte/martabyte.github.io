@@ -5,7 +5,7 @@ date:   2021-06-10 17:15:00 +0200
 categories: ios hacking
 ---
 
-*h3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently learning, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution: Kali Linux. I will also be using 'checkra1n' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the latest iOS version as of April 2021 (14.5).
+*h3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently learning, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution: Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **latest iOS version** as of April 2021 (14.5).
 
 This post is purely educational and intended for Ethical Hacking purposes only. If you find any mistakes or think I should improve something in this post, please let me know! :)
 
@@ -62,6 +62,7 @@ This post will be divided into different sections:
 
 - - - -
 
+<br>
 
 ## iOS Device Jailbreaking ##
 All mobile devices have restrictions set by the manufacturer that prevent end users to install certain components or applications, accessing low-level resources, tweaking configurations... Jailbreaking is a way to escalate privileges to remove these restrictions and be able to perform any desired operation on an iOS device. Its Android equivalent is called 'Rooting'.
@@ -97,6 +98,8 @@ Now the jailbreaking can be done just by following the steps checkra1n provides.
 
 
 - - - -
+
+<br>
 
 ## Initial Recommended Hacking Setup (Using Linux as the Host Computer's OS) ##
 Once the device is correctly jailbroken, the 'checkra1n' app should appear on the device. If your device is not already connected to wifi, connect it and download 'Cydia' from the 'checkra1n' app.
@@ -162,9 +165,12 @@ This package will install a series of useful command line tools, such as 'top', 
 
 - - - -
 
+<br>
+
 ## Static Analysis 101 ##
 Static analysis of apps mainly focuses on the evaluation of the executable file itself and its configurations before executing it to try to find misconfigurations or possible vulnerable functions. In iOS, apps are compiled to execute natively on the device, therefore, decompilation/reversing in high-level Objective-C it's not possible. But it is possible to reverse it to machine-level assembly code, although it will require further assembly and reversing skills to start to understand the code.
 
+<br>
 ### Initial App Binary Recon ###
 
 #### **iOS App Binary** ####
@@ -265,7 +271,7 @@ Save the file and relaunch the app, if the newly set value is correctly displaye
   * **kSecAttrAccessibleAlways**: The data can be read anytime, even if the device is locked. It is not recommended under any circumstance.
   * **kSecAttrAccesibleWhenPasscodeSetThisDeviceOnly**: The data can be accessed only when the device is unlocked.
 
-
+<br>
 ### Reverse Engineering ###
 Reverse Engineering is a whole world by itself. I don't have much experience with it so I'll just go over the few things I know, therefore I recommend doing more research on your own. Reverse Engineering iOS apps is a complex and time-consuming task due to the way apps are compiled, which makes them a bit more secure against attacks like app cloning.
 
@@ -282,11 +288,14 @@ The objective of reverse engineering the code is to understand the behaviour of 
 
 - - - -
 
+<br>
+
 ## Dynamic Analysis 101 ##
 Static analysis is important, but it is a bit more complex and in my opinion requires a quite some more coding and reversing experience than the average beginner penetration tester. In an static analysis, the application may be obfuscated or hard to follow, and it may require some server interaction or loading of dynamic code, so this is when dynamic analysis comes in handy. Dynamic analysis consists of monitoring the application's behaviour when it is being executed (real-time). This includes inspecting local storage and the interaction with the platform, and even modifying the behaviour of the application at runtime, to, for instance, force the app to use HTTP instead of HTTPS or disable jailbreak detection.
 
 As the application cannot be decompiled, manipulating the source code and recompiling it is not an option, but it is possible to manipulate the app by accessing the reflective runtime properties of Obj-C. This will allow us to access internal variables and objects at runtime, to be able to dynamically change the app's behaviour.
 
+<br>
 ### Objective-C Quick Start ###
 Objective-C used to be the primary language used for iOS development, although now Swift is becoming more popular due to its simplicity and improvements compared to Obj-C. I personally haven't dug into the world of Swift yet, so in this post I will focus on Obj-C, but I'll probably update it once I learn more about the dynamic analysis of Swift applications.  
 
@@ -300,7 +309,7 @@ Objective-C used to be the primary language used for iOS development, although n
 
 For further information, checkout this Objective-C quick guide from Tutorials Point: [Objective-C Tutorial - Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm)
 
-
+<br>
 ### Cycript ###
 Cycript is a runtime manipulation tool that uses JavaScript syntax to access Obj-C object data in an iOS app. It uses a Cydia library, Cydia Substrate, which allows to write a program that attaches to a running program and is able to manipulate its behaviour in memory, therefore, those changes will be lost once the app is terminated. If the application is written in Swift, Cycript in general can only modify the methods marked with the '@objc' header.
 
@@ -330,7 +339,7 @@ var classes = [[ObjectiveC.classes allKeys] componentsJoinedByString:@"\n"]
 <object>.prototype.<function> = function() { return <true/false/...>; } 
 ```
 
-
+<br>
 ### Frida / Objection ###
 Frida is a dynamic code instrumentation and reverse engineering toolkit that allows to inject snippets of code or even full libraries into apps.
 
@@ -421,7 +430,7 @@ The app cookies should also be checked to make sure it has the correct flags set
 [usb] # ios cookies get   # It will dump the application cookies
 ```
 
-
+<br>
 ### Further App Filesystem Analysis ###
 
 #### **Screenshots** ####
@@ -447,7 +456,7 @@ Application Snapshots are 'screenshots' the app performs when it is sent to the 
 #### **Keyboard Cache** ####
 iOS keeps whatever users type to provide features such as auto-correct or text completion, so this records potential sensitive information as plaintext in the system. Sensitive fields must be marked as secure so they're not cached (UITextAutocorrectionType). The cached text can be found at: '/var/mobile/Library/Keyboard/dynamic-text.dat'.
 
-
+<br>
 ### Analyzing the App Communications ###
 In order to analyze the communications between the app and its server, a proxy can be configured to observe and tamper with these communications. The recommended proxy is Burp Suite, which is an integrated platform for performing security testing of web applications by PortSwigger.
 
