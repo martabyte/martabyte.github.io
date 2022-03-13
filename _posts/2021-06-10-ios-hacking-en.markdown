@@ -3,6 +3,7 @@ layout: post
 title:  "iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2022 Edition]"
 date:   2022-03-13 19:25:00 +0100
 categories: ios hacking
+published: true
 ---
 
 *H3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently working on, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution, in this case, Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **last 14.x iOS version** as of March 2022 (iOS 14.5).
