@@ -15,7 +15,7 @@ My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration
 * Certified Red Team Professional (CRTP) - 2021
 
 ### Guides ###
-
+[iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2022 Edition]](https://martabyte.github.io/ios/hacking/2022/03/13/ios-hacking-en.html)
 
 ### Write-Ups ###
 
