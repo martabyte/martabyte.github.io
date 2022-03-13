@@ -31,7 +31,7 @@ twitter_username: martabyte
 github_username:  martabyte
 
 # Build settings
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
 
