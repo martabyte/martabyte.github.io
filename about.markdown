@@ -21,7 +21,7 @@ My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration
 
 
 ### Experience ###
-* Cybersecurity Consultant / Penetration Tester at EY (2019 - Now)
+* Cybersecurity Consultant / Penetration Tester
 
 <br><br>
 - - - -
@@ -42,7 +42,7 @@ Mi nombre es Marta (aka aphr0dite / martabyte) y soy una penetration tester de c
 
 
 ### Experiencia ###
-* Consultora de Cibersecuridad / Penetration Tester en EY (2019 - Actualidad)
+* Consultora de Cibersecuridad / Penetration Tester
 
 <!-- 
 ---
