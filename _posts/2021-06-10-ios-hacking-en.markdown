@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2021 Edition]"
-date:   2021-06-10 17:15:00 +0200
+title:  "iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2022 Edition]"
+date:   2022-03-13 19:25:00 +0100
 categories: ios hacking
 ---
 
-*h3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently learning, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution: Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **latest iOS version** as of April 2021 (14.5).
+*H3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently working on, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution, in this case, Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **last 14.x iOS version** as of March 2022 (iOS 14.5).
 
 This post is purely educational and intended for Ethical Hacking purposes only. If you find any mistakes or think I should improve something in this post, please let me know! :)
 
-This post will be divided into different sections:
+<!--This post will be divided into the following different sections:
 
 - [iOS Device Jailbreaking](#ios-device-jailbreaking)
   - [Checkra1n](#checkra1n)
@@ -34,6 +34,7 @@ This post will be divided into different sections:
     - [**Filesystem Checksums**](#filesystem-checksums)
     - [**Further Analysis**](#further-analysis)
   - [Reverse Engineering](#reverse-engineering)
+    - [**Identification of Sensitive/Insecure Funcions**](#identification-of-sensitiveinsecure-funcions)
 - [Dynamic Analysis 101](#dynamic-analysis-101)
   - [Objective-C Quick Start](#objective-c-quick-start)
     - [**The main concepts of Obj-C**](#the-main-concepts-of-obj-c)
@@ -57,7 +58,7 @@ This post will be divided into different sections:
   - [Analyzing the App Communications](#analyzing-the-app-communications)
     - [**Certificate Pinning**](#certificate-pinning)
     - [**Traffic Analysis**](#traffic-analysis)
-
+-->
 <br>
 
 - - - -
@@ -96,6 +97,8 @@ If your device's version is unsupported/untested, for instance, it's uploaded to
 
 Now the jailbreaking can be done just by following the steps checkra1n provides. Keep in mind that checkra1n performs a semi-tethered jailbreak, which means that if the device is rebooted, the device will be completely usable for normal iOS operations and apps, but the jailbreak process needs to be performed again from the computer to access its root functions. It will keep all its previous jailbroken apps and configurations once jailbroken again.
 
+**Note**: Your host computer must be Linux in order for this method to work correctly. If you try to perform the jailbreak from a Linux VM in a Windows host, some device connection errors may appear mid-jailbreak and are relatively hard to correct. In case you don't have a Linux host, my recommendation is to use a Kali Live-USB to perform the jailbreak.
+
 
 - - - -
 
@@ -121,7 +124,7 @@ Filza will allow you to navigate through all files in the device. This will allo
 AppSync Unified is needed to correctly install downloaded ad-hoc signed, fakesigned or unsigned IPAs. To download it through Cydia, follow the following steps:
 
 1. Go to the 'Sources' tab > 'Edit' > 'Add'
-2. Add the latest AppSync Unified repo: 'http://cydia.akemi.ai' (as of April 2021)
+2. Add the latest AppSync Unified repo: 'https://cydia.akemi.ai' (as of March 2022)
 3. Once the repo is added it will appear as 'Karen Repo' and the app should appear in the 'Search' tab
 
 
@@ -143,16 +146,24 @@ Frida is another app that allows you to perform dynamic analysis by hooking into
 To download it through Cydia, follow the steps below:
 
 1. Go to the 'Sources' tab > 'Edit' > 'Add'
-2. Add the latest Frida repo: 'http://build.frida.re' (as of April 2021)
+2. Add the latest Frida repo: 'https://build.frida.re' (as of March 2022)
 3. Once the repo is added, the app should appear in the 'Search' tab
 
 
 ### SSL Kill Switch 2 ###
-A frequent protection against the hijacking of app communications is Certificate Pinning. There are many ways to bypass this control, a couple of which we will see in the [Dynamic Analysis](#dynamic-analysis-101) section, but the easiest way to do it is by downloading and activating this app through Cydia.  
+A frequent protection against the hijacking of app communications is Certificate Pinning. There are many ways to bypass this control, a couple of which we will see in the [Dynamic Analysis](#dynamic-analysis-101) section, but the easiest way to do it is by downloading and activating this app through Cydia.
+
+To download it, visit the [SSL Kill Switch 2 GitHub page](https://github.com/nabla-c0d3/ssl-kill-switch2), download the .IPA file and install it from Filza.
 
 
 ### Liberty Lite ###
 Another common protection against app hacking is through the implementation of jailbreak controls. Depending on the type and quality of the controls used there are many different ways to try to bypass them, one of the easiest ones being downloading and activating this app through Cydia. Other ways to bypass it can also be found in the [Dynamic Analysis](#dynamic-analysis-101) section.
+
+To download it through Cydia, follow the steps below:
+
+1. Go to the 'Sources' tab > 'Edit' > 'Add'
+2. Add the latest Frida repo: 'https://ryleyangus.com/repo/' (as of March 2022)
+3. Once the repo is added, the app should appear in the 'Search' tab
 
 
 ### Darwin CC Tools ###
@@ -171,6 +182,7 @@ This package will install a series of useful command line tools, such as 'top', 
 Static analysis of apps mainly focuses on the evaluation of the executable file itself and its configurations before executing it to try to find misconfigurations or possible vulnerable functions. In iOS, apps are compiled to execute natively on the device, therefore, decompilation/reversing in high-level Objective-C it's not possible. But it is possible to reverse it to machine-level assembly code, although it will require further assembly and reversing skills to start to understand the code.
 
 <br>
+
 ### Initial App Binary Recon ###
 
 #### **iOS App Binary** ####
@@ -255,6 +267,10 @@ Save the file and relaunch the app, if the newly set value is correctly displaye
 
 #### **Further Analysis** ####
 * **Examine Logging (ASL) Messages**: The contents of Apple System Log (ASL) can be retrieved by any application without any further permissions, therefore, there can't be any sensitive information about the application or its users on the logs.
+  ```
+  idevice_id --list   # To find the device ID
+  idevicesyslog -u <id> (| grep <app>)   # To get the device logs
+  ```
 
 * **Password Storing**: The following is a quick guide from worst to best ways to handle application passwords.
   * Saving the password as plaintext in 'NSUserDefaults' object or any other file storage
@@ -272,6 +288,7 @@ Save the file and relaunch the app, if the newly set value is correctly displaye
   * **kSecAttrAccesibleWhenPasscodeSetThisDeviceOnly**: The data can be accessed only when the device is unlocked.
 
 <br>
+
 ### Reverse Engineering ###
 Reverse Engineering is a whole world by itself. I don't have much experience with it so I'll just go over the few things I know, therefore I recommend doing more research on your own. Reverse Engineering iOS apps is a complex and time-consuming task due to the way apps are compiled, which makes them a bit more secure against attacks like app cloning.
 
@@ -285,6 +302,69 @@ If these queries do not provide any results, the app is written in Objective-C.
 
 The objective of reverse engineering the code is to understand the behaviour of the app without executing it. The tool I mainly use is **Ghidra**, since it's a free reverse engineering tool available for Linux and relatively easy to understand if you're new to reverse engineering. To import the file I select the 'Batch' option and the ipa file. From this point on, I'll try to find either hardcoded credentials, or try to understand how the functions work, or try to find, for instance, the jailbreak detection function to try to understand how to avoid detection...
 
+#### **Identification of Sensitive/Insecure Funcions** ####
+
+* **Weak Hashing Algorithms**
+  ```
+  # On the iOS device
+  otool -Iv <app> | grep -w "_CC_MD5"
+  otool -Iv <app> | grep -w "_CC_SHA1"
+
+  # On linux
+  grep -iER "_CC_MD5"
+  grep -iER "_CC_SHA1"
+  ```
+
+* **Insecure Random Functions**
+  ```
+  # On the iOS device
+  otool -Iv <app> | grep -w "_random"
+  otool -Iv <app> | grep -w "_srand"
+  otool -Iv <app> | grep -w "_rand"
+
+  # On linux
+  grep -iER "_random"
+  grep -iER "_srand"
+  grep -iER "_rand"
+  ```
+
+* **Insecure 'Malloc' Function**
+  ```
+  # On the iOS device
+  otool -Iv <app> | grep -w "_malloc"
+
+  # On linux
+  grep -iER "_malloc"
+  ```
+
+* **Insecure and Vulnerable Functions**
+  ```
+  # On the iOS device
+  otool -Iv <app> | grep -w "_gets"
+  otool -Iv <app> | grep -w "_memcpy"
+  otool -Iv <app> | grep -w "_strncpy"
+  otool -Iv <app> | grep -w "_strlen"
+  otool -Iv <app> | grep -w "_vsnprintf"
+  otool -Iv <app> | grep -w "_sscanf"
+  otool -Iv <app> | grep -w "_strtok"
+  otool -Iv <app> | grep -w "_alloca"
+  otool -Iv <app> | grep -w "_sprintf"
+  otool -Iv <app> | grep -w "_printf"
+  otool -Iv <app> | grep -w "_vsprintf"
+
+  # On linux
+  grep -R "_gets"
+  grep -iER "_memcpy"
+  grep -iER "_strncpy"
+  grep -iER "_strlen"
+  grep -iER "_vsnprintf"
+  grep -iER "_sscanf"
+  grep -iER "_strtok"
+  grep -iER "_alloca"
+  grep -iER "_sprintf"
+  grep -iER "_printf"
+  grep -iER "_vsprintf"
+  ```
 
 - - - -
 
@@ -296,6 +376,7 @@ Static analysis is important, but it is a bit more complex and in my opinion req
 As the application cannot be decompiled, manipulating the source code and recompiling it is not an option, but it is possible to manipulate the app by accessing the reflective runtime properties of Obj-C. This will allow us to access internal variables and objects at runtime, to be able to dynamically change the app's behaviour.
 
 <br>
+
 ### Objective-C Quick Start ###
 Objective-C used to be the primary language used for iOS development, although now Swift is becoming more popular due to its simplicity and improvements compared to Obj-C. I personally haven't dug into the world of Swift yet, so in this post I will focus on Obj-C, but I'll probably update it once I learn more about the dynamic analysis of Swift applications.  
 
@@ -310,6 +391,7 @@ Objective-C used to be the primary language used for iOS development, although n
 For further information, checkout this Objective-C quick guide from Tutorials Point: [Objective-C Tutorial - Quick Guide](https://www.tutorialspoint.com/objective_c/objective_c_quick_guide.htm)
 
 <br>
+
 ### Cycript ###
 Cycript is a runtime manipulation tool that uses JavaScript syntax to access Obj-C object data in an iOS app. It uses a Cydia library, Cydia Substrate, which allows to write a program that attaches to a running program and is able to manipulate its behaviour in memory, therefore, those changes will be lost once the app is terminated. If the application is written in Swift, Cycript in general can only modify the methods marked with the '@objc' header.
 
@@ -340,6 +422,7 @@ var classes = [[ObjectiveC.classes allKeys] componentsJoinedByString:@"\n"]
 ```
 
 <br>
+
 ### Frida / Objection ###
 Frida is a dynamic code instrumentation and reverse engineering toolkit that allows to inject snippets of code or even full libraries into apps.
 
@@ -431,6 +514,7 @@ The app cookies should also be checked to make sure it has the correct flags set
 ```
 
 <br>
+
 ### Further App Filesystem Analysis ###
 
 #### **Screenshots** ####
@@ -457,6 +541,7 @@ Application Snapshots are 'screenshots' the app performs when it is sent to the 
 iOS keeps whatever users type to provide features such as auto-correct or text completion, so this records potential sensitive information as plaintext in the system. Sensitive fields must be marked as secure so they're not cached (UITextAutocorrectionType). The cached text can be found at: '/var/mobile/Library/Keyboard/dynamic-text.dat'.
 
 <br>
+
 ### Analyzing the App Communications ###
 In order to analyze the communications between the app and its server, a proxy can be configured to observe and tamper with these communications. The recommended proxy is Burp Suite, which is an integrated platform for performing security testing of web applications by PortSwigger.
 
