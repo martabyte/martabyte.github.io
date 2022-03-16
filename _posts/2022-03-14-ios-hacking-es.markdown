@@ -38,8 +38,9 @@ sudo apt-get update
 sudo apt-get install checkra1n
 ```
 
-Una vez descargado, comprobad que lo estéis ejecutando con **privilegios de administrador**, ya que, si no se lanza con estos privilegios, no detectará el dispositivo una vez que esté en modo *‘recovery’* [No seáis como yo y os paseís un día entero revisando qué está mal para ver que simplemente era esta tontería].  Para lanzar la versión gráfica:
+Una vez descargado, comprobad que lo estéis ejecutando con **privilegios de administrador**, ya que, si no se lanza con estos privilegios, no detectará el dispositivo una vez que esté en modo *‘recovery’* [No seáis como yo y os paseís un día entero revisando qué está mal para ver que simplemente era esta tontería].  
 
+Para lanzar la versión gráfica:
 ```
 sudo checkra1n --gui & 
 ```
@@ -152,16 +153,16 @@ El binario de una app iOS debería tener medidas de seguridad propias. El binari
   otool -I -v <app-binary> | grep objc_release   # Debería incluir el símbolo _objc_release 
   ```
 
-* **Binario Encriptado**: El binario debería estar encriptado
+* **Binario Encriptado/Cifrado**: El binario debería estar encriptado/cifrado
   ```
   otool -arch all -Vl <app-binary> | grep -A5 LC_ENCRYPT   # El cryptid debería ser 1
   ```
 
 
-### Desencriptar la App ###
-Para poder realizar ingeniería inversa sobre la app, se necesita acceso a una copia no encriptada del binario. Si el binario está encriptado, existen diferentes maneras de desencriptarlo, pero personalmente he usado '[frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump)'. Los pasos para usar este método, y otras 2 maneras de desencriptar el binario, se pueden encontrar aquí: [Decrypt iOS Applications: 3 Methods](https://fadeevab.com/decrypt-ios-applications-3-methods/). Si Frida es el método escogido, comprobad que habéis instalado Frida en el dispositivo.
+### Desencriptar/Descifrar la App ###
+Para poder realizar ingeniería inversa sobre la app, se necesita acceso a una copia no encriptada/cifrada del binario. Si el binario está encriptado/cifrado, existen diferentes maneras de desencriptarlo/descifrarlo, pero personalmente he usado '[frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump)'. Los pasos para usar este método, y otras 2 maneras de desencriptar/descifrar el binario, se pueden encontrar aquí: [Decrypt iOS Applications: 3 Methods](https://fadeevab.com/decrypt-ios-applications-3-methods/). Si Frida es el método escogido, comprobad que habéis instalado Frida en el dispositivo.
 
-Una vez se obtiene el IPA desencriptado, se puede cambiar su extensión a 'zip' y se puede descomprimir para analizar sus archivos internos.
+Una vez se obtiene el IPA desencriptado/descifrado, se puede cambiar su extensión a 'zip' y se puede descomprimir para analizar sus archivos internos.
 
 
 #### **Información Sensible en el Sistema de Archivos de la App** ####
@@ -231,7 +232,7 @@ Guardad el archivo y reiniciad la app. Si el nuevo valor se muestra correctament
   <br/>
 
   El iOS Keychain proporciona una manera segura de almacenar datos sensibles, que se protege siguiendo esta estructura de clases:
-  * **kSecAttrAccessibleWhenUnlocked**: El archivo se almacena encriptado y no puede ser leido mientras el dispositivo se está encenciendo o está bloqueado.
+  * **kSecAttrAccessibleWhenUnlocked**: El archivo se almacena encriptado/cifrado y no puede ser leido mientras el dispositivo se está encenciendo o está bloqueado.
   * **kSecAttrAccessibleAfterFirstUnlock**: El archivo permanece accesible hasta el siguiente reinicio del dispositivo. Se recomienda para items que se acceden por apps en segundo plano.
   * **kSecAttrAccessibleAlways**: Los datos son accesibles en cualquier momento, incluso si el dispositivo está bloqueado. No se recomienda bajo ninguna circunstancia.
   * **kSecAttrAccesibleWhenPasscodeSetThisDeviceOnly**: Los datos son accesibles únicamente cuando el dispositivo está desbloqueado.
@@ -511,6 +512,22 @@ Uno de los problemas con el Certificate Pinning es que, cuando el certificado ex
 Si la app a analizar no tiene Certificate Pinning, sus comunicaciones serán visibles a través del proxy de forma automática. Si después de seguir los pasos de configuración del proxy no se pueden ver las comunicaciones, es muy probable que la app implemente Certificate Pinning de sus comunicaciones.
 
 Una de las formas con las que se puede *bypassear* es activando desde los ‘Ajustes’ del dispositivo la aplicación ‘SSL Kill Switch 2’ previamente instalada. Esta app manipula las rutinas que manejan el certificado a bajo nivel, sobrescribiendo cualquier método delegado, incluyendo las rutinas de Certificate Pinning. Otra manera sería sobrescribir de forma automática los métodos relacionados con el Certificate Pinning con la opción 'ios sslpinning disable' de 'Objection'.
+
+
+#### **TcpDump** ####
+En algunos casos, no todas las comunicaciones entre el cliente y el servidor serán por los puertos 80 y 443, por lo que puede ser interesante analizar el tráfico completo del dispositivo para identificar posibles canales alternativos de comunicación. Una herramienta que permite capturar todo el tráfico entrante y saliente del dispositivo es *'tcpdump'*, que puede ser instalada desde Cydia.
+
+Algunos ejemplos básicos de uso de la herramienta (que se pueden combinar) son:
+```
+tcpdump -w <archivo-output, p.e output.pcap>   # Para almacenar todo el tráfico en un archivo para poder analizarlo después con herramientas como Wireshark o Tshark
+tcpdump host <ip>   # Para únicamente capturar el tráfico de un cierto host
+tcpdump src/dst <ip>   # Para únicamente capturar el tráfico con origen/destino de/a un cierto host
+tcpdump port <puerto>    # Para únicamente capturar el tráfico basado en un puerto de servicio
+tcpdump <servicio, p.e. tcp, udp>    # Para únicamente capturar el tráfico basado en un servicio
+tcpdump greater <N>   # Para únicamente capturar el tráfico que tenga un tamaño mayor a N
+```
+
+Más información sobre la herramienta *'tcpdump'* se puede encontrar fácilmente por internet, como por ejemplo en: [Wikipedia - TCPDump](https://es.wikipedia.org/wiki/Tcpdump), [TCPDump Cheat Sheet](https://packetlife.net/media/library/12/tcpdump.pdf), [Digital Forensics with TCPDump](https://www.securitynewspaper.com/2021/11/06/how-to-do-digital-forensics-of-a-hacked-network-with-tcpdump/), [Capturar el Tráfico de Red con Tcpdump y Wireshark](https://puerto53.com/linux/capturar-el-trafico-de-red-con-tcpdump-y-wireshark/) o [An introduction to using tcpdump at the Linux command line](https://opensource.com/article/18/10/introduction-tcpdump). (Agradecimientos a @Miguel_Arroyo76 por sugerir añadir esta herramienta al post)
 
 
 #### **Análisis del Tráfico** ####

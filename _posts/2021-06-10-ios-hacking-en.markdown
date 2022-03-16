@@ -58,6 +58,7 @@ This post is purely educational and intended for Ethical Hacking purposes only. 
     - [**Keyboard Cache**](#keyboard-cache)
   - [Analyzing the App Communications](#analyzing-the-app-communications)
     - [**Certificate Pinning**](#certificate-pinning)
+    - [**TcpDump**](#tcpdump)
     - [**Traffic Analysis**](#traffic-analysis)
 -->
 <br>
@@ -88,8 +89,9 @@ sudo apt-get update
 sudo apt-get install checkra1n
 ```
 
-Once downloaded, make sure to launch it with **admin privileges**, otherwise it won't detect your device once it's in recovery mode [Don't be like me and spend a whole day wondering what was wrong just to find out I am simply stupid]. To launch the gui version:
+Once downloaded, make sure to launch it with **admin privileges**, otherwise it won't detect your device once it's in recovery mode [Don't be like me and spend a whole day wondering what was wrong just to find out I am simply stupid]. 
 
+To launch the gui version:
 ```
 sudo checkra1n --gui &
 ```
@@ -563,6 +565,22 @@ One of the problems with Certificate Pinning is that when the certificate expire
 If the app to analyze does not have Certificate Pinning, its communications will be seen through the proxy automatically. If after following the previous proxy configuration steps, the communication between the app and its server cannot be intercepted, it's probable the app implements Certificate Pinning to its communications.
 
 One of the ways it can be bypassed is by activating the previously installed 'SSL Kill Switch 2' app through the device's 'Settings' app. It manipulates the Certificate handling routines at low-level, overriding any app delegate method, including the Certificate Pinning routines. Another way would be automatically overriding the Certificate Pinning-related methods by selecting the option 'ios sslpinning disable' in 'Objection'.
+
+
+#### **TcpDump** ####
+In some cases, not all communications between the client and server will be through ports 80 and 443, so it would be interesting to analyze all traffic in the device to identify alternative communication channels. An interesting tool that can capture all incoming and outgoing traffic to/from the device is *'tcpdump'*, which can easily be installed through Cydia.
+
+Some basic *'tcpdump'* use cases (that can be combined) can be found below:
+```
+tcpdump -w <archivo-output, p.e output.pcap>   # To dump all captured traffic into a file to be able to further analyze it with tools such as Wireshark or Tshark
+tcpdump host <ip>   # To only capture traffic to and from a certain host
+tcpdump src/dst <ip>   # To only capture traffic whose source/destination is the specified host
+tcpdump port <puerto>    # To only capture traffic based on a certain port
+tcpdump <servicio, p.e. tcp, udp>    # To only capture traffic based on a certain service
+tcpdump greater <N>   # To only capture traffic whose size is bigger than N
+```
+
+More information about the tool *'tcpdump'* can easily be found on the Internet, in resources such as: [TCPDump Cheat Sheet](https://packetlife.net/media/library/12/tcpdump.pdf), [Digital Forensics with TCPDump](https://www.securitynewspaper.com/2021/11/06/how-to-do-digital-forensics-of-a-hacked-network-with-tcpdump/), or [An introduction to using tcpdump at the Linux command line](https://opensource.com/article/18/10/introduction-tcpdump). (Special thanks to @Miguel_Arroyo76 for suggesting this tool to be added to the post)
 
 
 #### **Traffic Analysis** ####
