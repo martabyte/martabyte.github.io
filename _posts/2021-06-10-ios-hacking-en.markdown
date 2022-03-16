@@ -432,7 +432,7 @@ In order to install Frida and Objection in the host computer: `pip3 install frid
 The Frida Server will run from the iOS device and will inject the code into the application.
 
 ```
-frida-ls-devices   # To list all available connections to frida-servers
+frida-ls-devices   # To list all available connections to frida-servers 
 frida-ps -U   # To list of all running processes on the target device (USB connected)
 
 frida -U <process-name>   # To attach to a process

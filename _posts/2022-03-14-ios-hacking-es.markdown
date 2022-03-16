@@ -41,7 +41,7 @@ sudo apt-get install checkra1n
 Una vez descargado, comprobad que lo estéis ejecutando con **privilegios de administrador**, ya que, si no se lanza con estos privilegios, no detectará el dispositivo una vez que esté en modo *‘recovery’* [No seáis como yo y os paseís un día entero revisando qué está mal para ver que simplemente era esta tontería].  Para lanzar la versión gráfica:
 
 ```
-sudo checkra1n --gui &
+sudo checkra1n --gui & 
 ```
 
 Si la versión de vuestro dispositivo aparece como **unsupported/untested**, por ejemplo, está actualizado a la **última versión de iOS 14.x** como el mío, se puede hacer el jailbreak (menos en iOS 15 por ahora), ya que este método explota una vulnerabilidad en la BootROM (‘checkm8’), por lo que, en general, no se puede parchear con actualizaciones de software comunes y el jailbreak muy probablemente siga funcionando. Para que checkra1n pueda realizar el jailbreak de estas versiones *’unsupported/untested’* simplemente dirigíos a ‘Options’ y seleccionad la opción ‘Allow untested iOS/iPAD/tvOS versions’. Si vuestro dispositivo es un dispositivo A11 con iOS 14.0 - iOS 14.8, es necesario eliminar la contraseña de acceso *(‘passcode’)* y seleccionar la opción ‘Skip A11 BPR check’. También, cabe destacar que en Linux, checkra1n no funciona para los dispositivos con A7 por ahora. Para más información y más actualizada sobre la compatibilidad con versiones y dispositivos específicos, os recomiendo visitar la [página web oficial de Checkra1n](https://checkra.in).
