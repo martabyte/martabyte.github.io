@@ -6,7 +6,7 @@ categories: ios hacking
 published: true
 ---
 
-*H3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently working on, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution, in this case, Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **last 14.x iOS version** as of March 2022 (iOS 14.8).
+*H3ll0 fr13nds!* My first post will be about iOS Hacking, a topic I'm currently working on, so this will be a kind of gathering of all information I have found in my research. It must be noted that I won't be using any MacOS tools, since the computer used for this task will be a **Linux** host, specifically a Debian-based distribution, in this case, Kali Linux. I will also be using '**checkra1n**' for the device jailbreaking, but there are other alternatives such as 'unc0ver' or 'Taurine', so just choose the one that fits best to your device or your liking. For background, my device is an iPhone 6s updated to the **latest 14.x iOS version** as of March 2022 (iOS 14.8). To my knowledge, there's no fully-working jailbreak for iOS 15 yet.
 
 This post is purely educational and intended for Ethical Hacking purposes only. If you find any mistakes or think I should improve something in this post, please let me know! :)
 
@@ -88,13 +88,13 @@ sudo apt-get update
 sudo apt-get install checkra1n
 ```
 
-Once downloaded, make sure to launch it with **admin privileges** otherwise, it won't detect your device once it's in recovery mode [Don't be like me and spend a whole day wondering what was wrong just to find out I am simply stupid]. To launch the gui version:
+Once downloaded, make sure to launch it with **admin privileges**, otherwise it won't detect your device once it's in recovery mode [Don't be like me and spend a whole day wondering what was wrong just to find out I am simply stupid]. To launch the gui version:
 
 ```
 sudo checkra1n --gui &
 ```
 
-If your device's version is unsupported/untested, for instance, it's uploaded to the latest iOS version, the jailbreaking can still be performed, as this method exploits a vulnerability in the BootROM ('checkm8'), therefore it's unpatchable through software updates and so the jailbreaking will most likely also work. In order for checkra1n to jailbreak an unsupported/untested version just go to 'Options' and select 'Allow untested iOS/iPAD/tvOS versions'. If your device is a A11 device on OS 14.0 and above, it is required to remove the passcode and to enable “Skip A11 BPR check” in the options. Keep in mind, A7 devices do not work on the Linux version for now. More and updated information about specific devices and iOS version compatibility can be found in [Checkra1n's Official Website](https://checkra.in).
+If your device's version is **unsupported/untested**, for instance, it's **uploaded to the latest 14.x iOS version** like mine, the jailbreaking can still be performed (minus in iOS 15 for now), as this method exploits a vulnerability in the BootROM ('checkm8'), therefore it's unpatchable through software updates and so the jailbreaking will most likely also work. In order for checkra1n to jailbreak an unsupported/untested version just go to 'Options' and select 'Allow untested iOS/iPAD/tvOS versions'. If your device is a A11 device on OS 14.0 and above, it is required to remove the passcode and to enable “Skip A11 BPR check” in the options. Keep in mind, A7 devices do not work on the Linux version for now. More and updated information about specific devices and iOS version compatibility can be found in [Checkra1n's Official Website](https://checkra.in).
 
 Now the jailbreaking can be done just by following the steps checkra1n provides. Keep in mind that checkra1n performs a semi-tethered jailbreak, which means that if the device is rebooted, the device will be completely usable for normal iOS operations and apps, but the jailbreak process needs to be performed again from the computer to access its root functions. It will keep all its previous jailbroken apps and configurations once jailbroken again.
 
@@ -152,7 +152,7 @@ To download it through Cydia, follow the steps below:
 
 
 ### SSL Kill Switch 2 ###
-A frequent protection against the hijacking of app communications is Certificate Pinning. There are many ways to bypass this control, a couple of which we will see in the [Dynamic Analysis](#dynamic-analysis-101) section, but the easiest way to do it is by downloading and activating this app through Cydia.
+A frequent protection against the hijacking of app communications is Certificate Pinning. There are many ways to bypass this control, a couple of which we will see in the [Dynamic Analysis](#dynamic-analysis-101) section, but the easiest way to do it is by downloading and activating this app.
 
 To download it, visit the [SSL Kill Switch 2 GitHub page](https://github.com/nabla-c0d3/ssl-kill-switch2), download the .IPA file and install it from Filza.
 
@@ -163,7 +163,7 @@ Another common protection against app hacking is through the implementation of j
 To download it through Cydia, follow the steps below:
 
 1. Go to the 'Sources' tab > 'Edit' > 'Add'
-2. Add the latest Frida repo: 'https://ryleyangus.com/repo/' (as of March 2022)
+2. Add the latest Liberty Lite repo: 'https://ryleyangus.com/repo/' (as of March 2022)
 3. Once the repo is added, the app should appear in the 'Search' tab
 
 
@@ -433,12 +433,12 @@ The Frida Server will run from the iOS device and will inject the code into the 
 
 ```
 frida-ls-devices   # To list all available connections to frida-servers
-frida-ps -U   # To list of all running processes on the target device
+frida-ps -U   # To list of all running processes on the target device (USB connected)
 
 frida -U <process-name>   # To attach to a process
 frida -U -l <script>.js -n <process-name> --no-pause   # To inject a script into a process and attach to it
 
-frida-ps -Uai   # To list of all installed applications on the target device
+frida-ps -Uai   # To list of all installed applications on the target device (USB connected)
 
 frida-discover -U <process-name>   # To discover internal functions
 frida-trace -m "<function>" -U -f <process-name>   # To trace function calls
@@ -562,11 +562,11 @@ One of the problems with Certificate Pinning is that when the certificate expire
 
 If the app to analyze does not have Certificate Pinning, its communications will be seen through the proxy automatically. If after following the previous proxy configuration steps, the communication between the app and its server cannot be intercepted, it's probable the app implements Certificate Pinning to its communications.
 
-One of the ways it can be bypassed is by activating the previously installed 'SSL Kill Switch 2' app through the device's 'Settings' app. It manipulates the Certificate handling routines at low-level, overriding any app delegate method, including the Certificate Pinning routines.
+One of the ways it can be bypassed is by activating the previously installed 'SSL Kill Switch 2' app through the device's 'Settings' app. It manipulates the Certificate handling routines at low-level, overriding any app delegate method, including the Certificate Pinning routines. Another way would be automatically overriding the Certificate Pinning-related methods by selecting the option 'ios sslpinning disable' in 'Objection'.
 
 
 #### **Traffic Analysis** ####
-From this point onward the analysis of the communications is the same as in a normal web applications, keeping in mind limitations that may be present in a mobile phone environment.
+From this point onward, the analysis of the communications is the same as in a normal web applications, keeping in mind limitations that may be present in a mobile phone environment.
 
 <br>
 
