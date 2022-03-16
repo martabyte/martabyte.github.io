@@ -572,11 +572,11 @@ In some cases, not all communications between the client and server will be thro
 
 Some basic *'tcpdump'* use cases (that can be combined) can be found below:
 ```
-tcpdump -w <archivo-output, p.e output.pcap>   # To dump all captured traffic into a file to be able to further analyze it with tools such as Wireshark or Tshark
+tcpdump -w <output-file, p.e output.pcap>   # To dump all captured traffic into a file to be able to further analyze it with tools such as Wireshark or Tshark
 tcpdump host <ip>   # To only capture traffic to and from a certain host
 tcpdump src/dst <ip>   # To only capture traffic whose source/destination is the specified host
 tcpdump port <puerto>    # To only capture traffic based on a certain port
-tcpdump <servicio, p.e. tcp, udp>    # To only capture traffic based on a certain service
+tcpdump <service, p.e. tcp, udp>    # To only capture traffic based on a certain service
 tcpdump greater <N>   # To only capture traffic whose size is bigger than N
 ```
 
