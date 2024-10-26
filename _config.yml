@@ -31,17 +31,17 @@ repository: "martabyte/martabyte"
 twitter_username: martabyte
 github_username:  martabyte
 
-header_pages:
-  - index.md
-  - about.md
+#header_pages:
+#  - index.md
+#  - about.md
 
 # Build settings
 #theme: minima
-#theme: jekyll-theme-console
+theme: jekyll-theme-chirpy
 style: dark
-#markdown: kramdown
-markdown: redcarpet
-remote_theme: b2a3e8/jekyll-theme-console
+markdown: kramdown
+#markdown: redcarpet
+#remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
