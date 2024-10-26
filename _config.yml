@@ -32,7 +32,9 @@ twitter_username: martabyte
 github_username:  martabyte
 
 # Build settings
-theme: minima
+#theme: minima
+markdown: kramdown
+remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
 
