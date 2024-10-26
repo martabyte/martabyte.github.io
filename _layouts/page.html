@@ -1,0 +1,14 @@
+---
+layout: base
+---
+<article class="post">
+
+  <header class="post-header">
+    <h2 class="post-title">{{ page.title | escape }}</h2>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
