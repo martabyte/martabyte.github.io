@@ -42,7 +42,8 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-
+minima:
+  skin: dark
   
 # Exclude from processing.
 # The following items will not be processed, by default.
