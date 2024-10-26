@@ -21,8 +21,9 @@
 name: martabyte
 title: martabyte
 # email: 
-description: |- #>- # this means to ignore newlines until "baseurl:"
-  "Red Team Operator / Penetration Tester\nCEH (Master) | CRTP"
+description: | #>- # this means to ignore newlines until "baseurl:"
+  Red Team Operator / Penetration Tester \ 
+  CEH (Master) | CRTP
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://martabyte.github.io"
 repository: "martabyte/martabyte" 
