@@ -33,7 +33,7 @@ github_username:  martabyte
 
 # Build settings
 #theme: minima
-#theme: console
+theme: jekyll-theme-console
 style: dark
 markdown: kramdown
 #remote_theme: b2a3e8/jekyll-theme-console
