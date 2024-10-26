@@ -39,7 +39,7 @@ github_username:  martabyte
 #theme: minima
 #remote_theme: cotes2020/jekyll-theme-chirpy
 #theme: cotes2020/jekyll-theme-chirpy
-theme: jekyll-theme-chirpy
+theme: dark-poole
 #style: dark
 markdown: kramdown
 #markdown: redcarpet
@@ -47,6 +47,8 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-gist
+  - jekyll-paginate
   
 # Exclude from processing.
 # The following items will not be processed, by default.
