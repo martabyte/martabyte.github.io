@@ -36,10 +36,10 @@ github_username:  martabyte
 #  - about.md
 
 # Build settings
-#theme: minima
+theme: minima
 #remote_theme: cotes2020/jekyll-theme-chirpy
-theme: jekyll-theme-chirpy
-style: dark
+#theme: jekyll-theme-chirpy
+#style: dark
 markdown: kramdown
 #markdown: redcarpet
 #remote_theme: b2a3e8/jekyll-theme-console
