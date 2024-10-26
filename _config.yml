@@ -33,13 +33,13 @@ github_username:  martabyte
 
 # Build settings
 #theme: minima
-#theme: jekyll-theme-console
+theme: jekyll-theme-console
 style: dark
 markdown: kramdown
-remote_theme: b2a3e8/jekyll-theme-console
+#remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
-
+  - jekyll-seo-tag
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
