@@ -96,17 +96,17 @@ pre { background-color: var(--code-background-color);  border: none;  padding: 0
 .highlight .kn { color: var(--code-color-5); } /* Keyword.Namespace */
 .highlight .kp { color: var(--code-color-5); } /* Keyword.Pseudo */
 .highlight .kr { color: var(--code-color-5); } /* Keyword.Reserved */
-.highlight .kt { color: var(--code-color-13); } /* Keyword.Type */
+.highlight .kt { color: var(--code-color-11); } /* Keyword.Type ****/
 .highlight .m { color: var(--code-color-14); } /* Literal.Number */
 .highlight .s { color: var(--code-color-15); } /* Literal.String */
 .highlight .na { color: var(--code-color-16); } /* Name.Attribute */
-.highlight .nb { color: var(--code-color-13); } /* Name.Builtin */
+.highlight .nb { color: var(--code-color-11); } /* Name.Builtin ****/
 .highlight .nc { color: var(--code-color-9); text-decoration: underline } /* Name.Class */
 .highlight .no { color: var(--code-color-7); } /* Name.Constant */
 .highlight .nd { color: var(--code-color-10); } /* Name.Decorator */
 .highlight .ni { color: var(--code-color-17); font-weight: bold } /* Name.Entity */
 .highlight .nf { color: var(--code-color-9); } /* Name.Function */
-.highlight .nn { color: var(--code-color-13); text-decoration: underline } /* Name.Namespace */
+.highlight .nn { color: var(--code-color-11); text-decoration: underline } /* Name.Namespace ****/
 .highlight .nt { color: var(--code-color-16); font-weight: bold } /* Name.Tag */
 .highlight .nv { color: var(--code-color-7); } /* Name.Variable */
 .highlight .ow { color: var(--code-color-5); } /* Operator.Word */
@@ -126,7 +126,7 @@ pre { background-color: var(--code-background-color);  border: none;  padding: 0
 .highlight .sr { color: var(--code-color-14); } /* Literal.String.Regex */
 .highlight .s1 { color: var(--code-color-15); } /* Literal.String.Single */
 .highlight .ss { color: var(--code-color-5); } /* Literal.String.Symbol */
-.highlight .bp { color: var(--code-color-13); } /* Name.Builtin.Pseudo */
+.highlight .bp { color: var(--code-color-11); } /* Name.Builtin.Pseudo ****/
 .highlight .vc { color: var(--code-color-7); } /* Name.Variable.Class */
 .highlight .vg { color: var(--code-color-7); } /* Name.Variable.Global */
 .highlight .vi { color: var(--code-color-7); } /* Name.Variable.Instance */
