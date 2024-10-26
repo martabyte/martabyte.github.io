@@ -1,65 +1,26 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: /whoami
+permalink: /whoami
 ---
-[English](#about-me) |
-[Español](#sobre-mí)
 
-#### About Me ####
+## $ whoami ##
 
-My name is Marta (aka aphr0dite / martabyte) and I'm a cybersecurity penetration tester that aims at learning everyday.
+my name is marta - i'm a red team operator - you can find me as @martabyte or @aphr0dite
 
-### Certifications ###
+### certs ###
 * Certified Ethical Hacker (Master) - 2021
 * Certified Red Team Professional (CRTP) - 2021
 
-### Guides ###
+### guides ###
 [iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2022 Edition]](https://martabyte.github.io/ios/hacking/2022/03/13/ios-hacking-en.html)
+[Hacking iOS - Guía para Principiantes sobre Hacking de Apps iOS [Edición 2022]](https://martabyte.github.io/ios/hacking/2022/03/14/ios-hacking-es.html)
 
-### Write-Ups ###
+### write-ups ###
 
 
-### Experience ###
+### experience ###
+* Red Team Operator
 * Cybersecurity Consultant / Penetration Tester
 
 <br><br>
-- - - -
-<br>
-
-#### Sobre Mí ####
-
-Mi nombre es Marta (aka aphr0dite / martabyte) y soy una penetration tester de ciberseguridad que intenta aprender cada día.
-
-### Certificaciones ###
-* Certified Ethical Hacker (Master) - 2021
-* Certified Red Team Professional (CRTP) - 2021
-
-### Guías ###
-
-
-### Write-Ups ###
-
-
-### Experiencia ###
-* Consultora de Cibersecuridad / Penetration Tester
-
-<!-- 
----
-layout: page
-title: About
-permalink: /about/
----
-
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll -->
