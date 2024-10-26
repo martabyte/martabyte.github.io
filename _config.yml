@@ -31,13 +31,12 @@ repository: "martabyte/martabyte"
 twitter_username: martabyte
 github_username:  martabyte
 
-#header_pages:
-#  - index.md
-#  - about.md
+header_pages:
+  - index.md
+  - about.md
 
 # Build settings
 theme: minima
-style: dark
 markdown: kramdown
 plugins:
   - jekyll-feed
