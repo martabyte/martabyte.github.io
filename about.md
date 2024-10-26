@@ -18,7 +18,7 @@ my name is marta - i'm a red team operator - you can find me as @martabyte or @a
 
 
 ### experience ###
-* Red Team Operator
-* Cybersecurity Consultant / Penetration Tester
+* red team operator
+* cybersecurity consultant / penetration tester
 
 <br><br>
