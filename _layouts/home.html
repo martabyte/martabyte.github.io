@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{{ title }}
+{{ page.title }}
 
 {{ content }}
 {% assign contentwonl = content | strip_newlines %} {% unless contentwonl == ""  %} <br /> {% endunless %} <!-- add line break if there is any content -->
