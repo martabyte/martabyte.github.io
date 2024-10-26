@@ -32,8 +32,8 @@ twitter_username: martabyte
 github_username:  martabyte
 
 header_pages:
-  - about.md
   - index.md
+  - about.md
 
 # Build settings
 #theme: minima
