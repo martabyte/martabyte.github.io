@@ -82,7 +82,7 @@ sudo apt install ifuse usbmuxd libimobiledevice libimobiledevice-utils libplist-
 ### Checkra1n ###
 One of the programs that allow the Jailbreaking of iOS devices is 'checkra1n'. This method of jailbreaking requires a host computer and a iOS device connected to it. In this case, the host computer will be a Linux host, being the recommended distribution a Debian-based one. The steps to download it are listed in the website, giving options of both using the repo or downloading the app binary. I followed the repo method:
 
-```python
+```bash
 echo 'deb https://assets.checkra.in/debian /' | sudo tee /etc/apt/sources.list.d/checkra1n.list
 sudo apt-key adv --fetch-keys https://assets.checkra.in/debian/archive.key
 sudo apt-get update
@@ -92,7 +92,7 @@ sudo apt-get install checkra1n
 Once downloaded, make sure to launch it with **admin privileges**, otherwise it won't detect your device once it's in recovery mode [Don't be like me and spend a whole day wondering what was wrong just to find out I am simply stupid]. 
 
 To launch the gui version:
-```
+```bash
 sudo checkra1n --gui &
 ```
 
@@ -192,22 +192,22 @@ Static analysis of apps mainly focuses on the evaluation of the executable file 
 An iOS app binary should have some further security measures. The app binary is found inside the app directory, which is usually found in '/private/var/containers/Bundle/Application/'.
 
 * **PIE (Position Independent Executable)**: When enabled, the application loads into a random memory address everytime it launches, making it harder to predict its initial memory address.
-  ```
+  ```bash
   otool -hv <app-binary> | grep PIE   # It should include the PIE flag
   ```
 
 * **Stack Canaries**: To validate the integrity of the stack, a 'canary' value is placed on the stack before calling a function and is validated again once the function ends.
-  ```
+  ```bash
   otool -I -v <app-binary> | grep stack_chk   # It should include the symbols: stack_chk_guard and stack_chk_fail
   ```
 
 * **ARC (Automatic Reference Counting)**: To prevent common memory corruption flaws
-  ```
+  ```bash
   otool -I -v <app-binary> | grep objc_release   # It should include the _objc_release symbol 
   ```
 
 * **Encrypted Binary**: The binary should be encrypted
-  ```
+  ```bash
   otool -arch all -Vl <app-binary> | grep -A5 LC_ENCRYPT   # The cryptid should be 1
   ```
 
@@ -221,14 +221,14 @@ Once the decrypted ipa is obtained, change its extension to 'zip' and unzip it t
 #### **Sensitive Information in the App Filesystem** ####
 A good way to identify hardcoded sensitive information is to look for usually sensitive values in the files of the app filesystem, such as IPs, email addresses... This can easily be done with 'strings', and/or 'grep' and a little bit of Regex.
 
-```
+```bash
 strings <filename>
 
 grep -Eo '<regex-expression>' -r *
 ```
 
 Example Regex Expressions:
-```
+```bash
 IPv4: [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} or ^\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}$
 
 Email Addresses: [a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$ or ^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$
@@ -244,7 +244,7 @@ URLs: (?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][
 
 Also, files with potential sensitive information can be found in the filesystem, specially those with extensions such as: plist, sql, xml, localstorage, db... These can be easily found with a simple 'find' command:
 
-```
+```bash
 find . -iname "*<extension>"
 ```
 
@@ -259,7 +259,7 @@ iOS stores app configuration data in 'plist' files. These files can either be in
 
 #### **Filesystem Checksums** ####
 An iOS app should validate the changes on the contents of the filesystem. Try changing some values in files you may find, for instance, a 'sqlite' db file:
-```
+```bash
 sqlite3 <file>.sqlite
 > (perform the needed SQL recon)
 > update <table> set <field>='<value>' WHERE <condition>
@@ -270,7 +270,7 @@ Save the file and relaunch the app, if the newly set value is correctly displaye
 
 #### **Further Analysis** ####
 * **Examine Logging (ASL) Messages**: The contents of Apple System Log (ASL) can be retrieved by any application without any further permissions, therefore, there can't be any sensitive information about the application or its users on the logs.
-  ```
+  ```bash
   idevice_id --list   # To find the device ID
   idevicesyslog -u <id> (| grep <app>)   # To get the device logs
   ```
@@ -296,7 +296,7 @@ Save the file and relaunch the app, if the newly set value is correctly displaye
 Reverse Engineering is a whole world by itself. I don't have much experience with it so I'll just go over the few things I know, therefore I recommend doing more research on your own. Reverse Engineering iOS apps is a complex and time-consuming task due to the way apps are compiled, which makes them a bit more secure against attacks like app cloning.
 
 First of all, it's recommended to find out if the app is written in Swift or in Objective-C. Apps written in Swift will have both of these binaries:
-```
+```bash
 nm <app> | grep '_OBJC_CLASS_$__' 
 otool -L <app> | grep libswift   # Don't think that because it says OBJC it's an Objective-C binary, it's not
 ```
@@ -308,7 +308,7 @@ The objective of reverse engineering the code is to understand the behaviour of 
 #### **Identification of Sensitive/Insecure Funcions** ####
 
 * **Weak Hashing Algorithms**
-  ```
+  ```bash
   # On the iOS device
   otool -Iv <app> | grep -w "_CC_MD5"
   otool -Iv <app> | grep -w "_CC_SHA1"
@@ -319,7 +319,7 @@ The objective of reverse engineering the code is to understand the behaviour of 
   ```
 
 * **Insecure Random Functions**
-  ```
+  ```bash
   # On the iOS device
   otool -Iv <app> | grep -w "_random"
   otool -Iv <app> | grep -w "_srand"
@@ -332,7 +332,7 @@ The objective of reverse engineering the code is to understand the behaviour of 
   ```
 
 * **Insecure 'Malloc' Function**
-  ```
+  ```bash
   # On the iOS device
   otool -Iv <app> | grep -w "_malloc"
 
@@ -341,7 +341,7 @@ The objective of reverse engineering the code is to understand the behaviour of 
   ```
 
 * **Insecure and Vulnerable Functions**
-  ```
+  ```bash
   # On the iOS device
   otool -Iv <app> | grep -w "_gets"
   otool -Iv <app> | grep -w "_memcpy"
@@ -403,7 +403,7 @@ Cycript will be launched from the iOS device using an SSH session. To launch Cyc
 #### **Class Enumeration** ####
 Cycript has a couple of functions that enumerate all classes. These methods provide a lot of output, so it's recommended to dump the output to a file and parse it from there.
 
-```
+```bash
 class-dump
 
 ObjectiveC.classes
@@ -420,7 +420,7 @@ var classes = [[ObjectiveC.classes allKeys] componentsJoinedByString:@"\n"]
 * `printMethods(<object>)`: To explore the object
 
 #### **Method Tampering Example** ####
-```
+```bash
 <object>.prototype.<function> = function() { return <true/false/...>; } 
 ```
 
@@ -433,7 +433,7 @@ In order to install Frida and Objection in the host computer: `pip3 install frid
 
 The Frida Server will run from the iOS device and will inject the code into the application.
 
-```
+```bash
 frida-ls-devices   # To list all available connections to frida-servers 
 frida-ps -U   # To list of all running processes on the target device (USB connected)
 
@@ -450,7 +450,7 @@ frida-kill -U <PID>   # To kill a process
 
 Objection is a toolkit built on top of Frida, extending Frida's capabilities and facilitating some actions such as bypassing SSL Certificate Pinning or Jailbreak Detection.
 
-```
+```bash
 objection -g <app-name> explore   # To attach to an app process - Objection restarts the app and injects into its process
 
 [usb] # env   # To locate all directories related to the app
@@ -461,7 +461,7 @@ objection -g <app-name> explore   # To attach to an app process - Objection rest
 Note: If there's an error where Objection or Frida can't access the Frida Server, open an SSH session to the device and run: ` frida-server & `, to open Frida Server as a background task.
 
 #### **Exploring the Application** ####
-```
+```bash
 [usb] # ios hooking list classes   # To list all classes in the app
 [usb] # ios hooking search classes <keyword>   # To search all classes containing a certain keyword
 [usb] # ios hooking list class_methods <class>   # To list all methods of a class
@@ -473,7 +473,7 @@ Note: If there's an error where Objection or Frida can't access the Frida Server
 ```
 
 #### **Tampering with the Application** ####
-```
+```bash
 [usb] # ios hooking set return_value <method> <true/false>   # To set the return value of a method to a certain Boolean value
 
 # If an 'invalid query' error appears, try to input the method following the recommended format, for instance: "*[<class> <method>]"
@@ -483,13 +483,13 @@ Note: If there's an error where Objection or Frida can't access the Frida Server
 #### **Disable Certificate Pinning** ####
 Another way to disable Certificate Pinning on the device is using Objection:
 
-```
+```bash
 [usb] # ios sslpinning disable --quiet   # The quiet option is because this hook can generate a lot of noise
 ```
 
 
 #### **Bypass Jailbreak Detection** ####
-```
+```bash
 [usb] # ios jailbreak disable   # To bypass jailbreak detection
 [usb] # ios jailbreak simulate   # To simulate a jailbroken environment
 ```
@@ -498,21 +498,21 @@ Another way to disable Certificate Pinning on the device is using Objection:
 #### **Binary Information** ####
 The app binary information can be also inspected from Objection and checked against the values mentioned in the [iOS App Binary](#ios-app-binary) section:
 
-```
+```bash
 [usb] # ios info binary   # It will show the app binary info
 ```
 
 #### **Keychain Dump** ####
 The contents of the device's Keychain can be analyzed from Objection to look for sensitive information.
 
-```
+```bash
 [usb] # ios keychain dump   # It will dump the contents of the keychain
 ```
 
 #### **Cookies** ####
 The app cookies should also be checked to make sure it has the correct flags set ('Secure', 'HTTPOnly', 'Path' pointing to the correct path...):
 
-```
+```bash
 [usb] # ios cookies get   # It will dump the application cookies
 ```
 
@@ -528,7 +528,7 @@ Check if the app allows screenshots. It might be a common feature, but it can le
 If the app is able to save values to the shared clipboard, it is vulnerable to 'Side Channel Data Leakage', as the information in the clipboard can be accessed through other apps. It can be checked through different ways: through Objection, manually looking into the contents of the Pasteboard in the system... The app should implement its own private clipboard.
 
 From Objection:
-```
+```bash
 [usb] # ios pasteboard monitor   # It will notify you whenever a new value is set to the pasteboard 
 ```
 
@@ -571,7 +571,7 @@ One of the ways it can be bypassed is by activating the previously installed 'SS
 In some cases, not all communications between the client and server will be through ports 80 and 443, so it would be interesting to analyze all traffic in the device to identify alternative communication channels. An interesting tool that can capture all incoming and outgoing traffic to/from the device is *'tcpdump'*, which can easily be installed through Cydia.
 
 Some basic *'tcpdump'* use cases (that can be combined) can be found below:
-```
+```bash
 tcpdump -w <output-file, p.e output.pcap>   # To dump all captured traffic into a file to be able to further analyze it with tools such as Wireshark or Tshark
 tcpdump host <ip>   # To only capture traffic to and from a certain host
 tcpdump src/dst <ip>   # To only capture traffic whose source/destination is the specified host
