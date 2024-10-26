@@ -37,13 +37,12 @@ github_username:  martabyte
 
 # Build settings
 theme: minima
-#style: dark
+style: dark
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-gist
-  - jekyll-paginate
+
   
 # Exclude from processing.
 # The following items will not be processed, by default.
