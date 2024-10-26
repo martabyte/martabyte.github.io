@@ -74,7 +74,7 @@ All mobile devices have restrictions set by the manufacturer that prevent end us
 
 To perform the Jailbreak of the device from a Linux host, I found out that a set of libraries were needed for the device to be detected correctly. Keep in mind that depending on your Linux installation these may not be needed, but these are the ones that worked for me:
 
-```
+```bash
 sudo apt install ifuse usbmuxd libimobiledevice libimobiledevice-utils libplist-utils ideviceinstaller python3-imobiledevice python3-plist python3-libplist (and/or libplist3)
 ```
 
@@ -82,7 +82,7 @@ sudo apt install ifuse usbmuxd libimobiledevice libimobiledevice-utils libplist-
 ### Checkra1n ###
 One of the programs that allow the Jailbreaking of iOS devices is 'checkra1n'. This method of jailbreaking requires a host computer and a iOS device connected to it. In this case, the host computer will be a Linux host, being the recommended distribution a Debian-based one. The steps to download it are listed in the website, giving options of both using the repo or downloading the app binary. I followed the repo method:
 
-```
+```python
 echo 'deb https://assets.checkra.in/debian /' | sudo tee /etc/apt/sources.list.d/checkra1n.list
 sudo apt-key adv --fetch-keys https://assets.checkra.in/debian/archive.key
 sudo apt-get update
