@@ -39,7 +39,8 @@ header_pages:
 #theme: minima
 #theme: jekyll-theme-console
 style: dark
-markdown: kramdown
+#markdown: kramdown
+markdown: redcarpet
 remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
