@@ -36,11 +36,18 @@ header_pages:
   - about.md
 
 # Build settings
-theme: minima
+#theme: minima
+#plugins:
+#  - jekyll-feed
+#  - jekyll-seo-tag
+#minima:
+#  skin: dark
 markdown: kramdown
+remote_theme: jekyll/minima
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-remote-theme
 minima:
   skin: dark
   
