@@ -31,6 +31,10 @@ repository: "martabyte/martabyte"
 twitter_username: martabyte
 github_username:  martabyte
 
+header_pages:
+  - about.md
+  - index.md
+
 # Build settings
 #theme: minima
 #theme: jekyll-theme-console
