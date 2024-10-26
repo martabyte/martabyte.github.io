@@ -1,10 +1,8 @@
 ---
 layout: page
-title: $ whoami
+title: /whoami
 permalink: /whoami
 ---
-
-## $ whoami ##
 
 my name is marta - i'm a red team operator - you can find me as @martabyte or @aphr0dite
 
