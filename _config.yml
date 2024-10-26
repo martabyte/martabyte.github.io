@@ -38,8 +38,8 @@ github_username:  martabyte
 # Build settings
 #theme: minima
 #remote_theme: cotes2020/jekyll-theme-chirpy
-theme: cotes2020/jekyll-theme-chirpy
-#theme: jekyll-theme-chirpy
+#theme: cotes2020/jekyll-theme-chirpy
+theme: jekyll-theme-chirpy
 #style: dark
 markdown: kramdown
 #markdown: redcarpet
