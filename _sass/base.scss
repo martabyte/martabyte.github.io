@@ -72,7 +72,7 @@ textarea { vertical-align: top; }
  */
 .lineno { color: var(--code-color-1); margin-right: 15px; }
 figure.highlight { margin: 5px 0; }
-pre { background-color: var(--background-color);  border: none;  padding: 0;  margin: 0;  overflow:auto;  font-size: $base-font-size;  color: var(--text-color);  line-height: 1.7 !important;  font-family: $base-font-family !important; }
+pre { background-color: var(--code-background-color);  border: none;  padding: 0;  margin: 0;  overflow:auto;  font-size: $base-font-size;  color: var(--text-color);  line-height: 1.7 !important;  font-family: $base-font-family !important; }
 .highlight .hll { background-color: var(--code-color-2); }
 .highlight .c { color: var(--code-color-1); font-style: italic } /* Comment */
 .highlight .err { color: var(--code-color-3); background-color: var(--code-color-4); } /* Error */
