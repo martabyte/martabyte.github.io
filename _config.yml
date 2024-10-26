@@ -37,13 +37,8 @@ github_username:  martabyte
 
 # Build settings
 #theme: minima
-#remote_theme: cotes2020/jekyll-theme-chirpy
-#theme: cotes2020/jekyll-theme-chirpy
-remote_theme: tajacks/lightspeed
 #style: dark
 markdown: kramdown
-#markdown: redcarpet
-#remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
