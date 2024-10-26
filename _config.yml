@@ -39,7 +39,7 @@ github_username:  martabyte
 #theme: minima
 #remote_theme: cotes2020/jekyll-theme-chirpy
 #theme: cotes2020/jekyll-theme-chirpy
-theme: dark-poole
+theme: poole-for-jekyll
 #style: dark
 markdown: kramdown
 #markdown: redcarpet
