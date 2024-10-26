@@ -22,7 +22,7 @@ name: martabyte
 title: martabyte
 # email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  Cybersecurity Consultant / Penetration Tester
+  Red Team Operator / Penetration Tester / Cybersecurity Consultant
   CEH (Master) | CRTP
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://martabyte.github.io"
