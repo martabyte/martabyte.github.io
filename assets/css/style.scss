@@ -1,7 +1,8 @@
 ---
 ---
 
-$dm-link-base-color: #a8a2a2 !default;
+/*$dm-link-base-color: #a8a2a2 !default;*/
+$dm-link-base-color: #964d4d !default;
 @import
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
