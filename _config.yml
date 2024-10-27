@@ -23,8 +23,6 @@ title: martabyte
 # email: 
 description: |
   Red Team Operator / Penetration Tester
-  
-  CEH (Master) | CRTP
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://martabyte.github.io"
 repository: "martabyte/martabyte" 
