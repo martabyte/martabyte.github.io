@@ -48,6 +48,9 @@ plugins:
   - jekyll-remote-theme
 minima:
   skin: dark
+  social_links:
+    - platform: github, user_url: "https://github.com/martabyte"
+    - platform: twitter, user_url: "https://twitter.com/martabyte"
   
 # Exclude from processing.
 # The following items will not be processed, by default.
