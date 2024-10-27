@@ -2,5 +2,5 @@
 
 $color-scheme-auto: false;
 $color-scheme-dark: true;
-$dm-link-base-color: #a8a2a2;
+$dm-link-base-color: #a8a2a2 !default;
 @import "auto";
