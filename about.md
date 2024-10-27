@@ -1,6 +1,6 @@
 ---
-layout: page
-title: /whoami
+layout: whoami
+title: whoami
 permalink: /whoami
 ---
 
