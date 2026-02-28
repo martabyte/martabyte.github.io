@@ -337,10 +337,16 @@ body::after {
 /* =============================================
    POST PAGE
    ============================================= */
-.post-wrapper, .whoami-wrapper {
-  max-width: 1000px; margin: 0 auto;
+.post-wrapper {
+  max-width: 1100px; margin: 0 auto;
   padding: 0 28px 80px;
   display: grid; grid-template-columns: 1fr 220px;
+  gap: 32px; align-items: start;
+}
+.whoami-wrapper {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 28px 80px;
+  display: grid; grid-template-columns: 1fr 260px;
   gap: 40px; align-items: start;
 }
 
@@ -482,13 +488,16 @@ body::after {
 }
 
 .section { margin-bottom: 36px; }
+.section-head,
 .section-label {
   font-family: 'Share Tech Mono', monospace; font-size: 10px;
   letter-spacing: 3px; text-transform: uppercase;
   color: var(--g2); margin-bottom: 14px;
   display: flex; align-items: center; gap: 10px;
 }
+.section-head::before,
 .section-label::before { content: '##'; color: var(--cyan); margin-right: 4px; }
+.section-head::after,
 .section-label::after {
   content: ''; flex: 1; height: 1px;
   background: linear-gradient(to right, var(--g3), transparent);
