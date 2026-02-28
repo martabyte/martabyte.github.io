@@ -747,6 +747,7 @@ body::after {
     grid-template-columns: 1fr !important;
     padding: 0 16px 60px !important;
     gap: 24px !important;
+    overflow-x: hidden;
   }
 
   /* breadcrumb ocupa toda la fila */
@@ -786,4 +787,28 @@ body::after {
 
   /* contact centrada */
   .contact-page { padding: 20px 16px !important; }
+
+  .prose pre {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .prose code {
+    word-break: break-all;
+  }
+
+  .bio-body,
+  .bio-k {
+    min-width: unset !important;
+    word-break: break-word;
+  }
+
+  .timeline {
+    overflow-x: auto;
+  }
+
+  .htb-details,
+  .htb-row {
+    overflow-x: hidden;
+  }
 }
