@@ -52,18 +52,18 @@ layout: default
         <div class="whoami-line"><span class="k">alias</span><span class="sep">:</span> <span class="v">{{ site.author.alias }}</span></div>
         <div class="whoami-line"><span class="k">focus</span><span class="sep">:</span> <span class="v">{{ site.author.focus }}</span></div>
         <div class="whoami-line"><span class="k">certs</span><span class="sep">:</span> <span class="v">{% for cert in site.author.certs %}{% unless cert.wip %}{{ cert.badge }}{% unless forloop.last %} · {% endunless %}{% endunless %}{% endfor %}</span></div>
-        <div class="whoami-line"><span class="k">pgp</span><span class="sep">:</span> <span class="v">{{ site.author.pgp }}</span></div>
+        <div class="whoami-line"><span class="k">deployed_at</span><span class="sep">:</span> <span class="v">{{ site.author.deployed_at }}</span></div>
       </div>
     </div>
 
-    <div class="panel">
+    <!--<div class="panel">
       <div class="panel-title"><span>$ cat /proc/blog</span><span class="pt-icon">▮</span></div>
       <div class="panel-body">
         <div class="stat-line"><span class="stat-k">total_posts</span><span class="stat-v">{{ site.posts | size | prepend: '00' | slice: -3, 3 }}</span></div>
         <div class="stat-line"><span class="stat-k">htb_rank</span><span class="stat-v">{{ site.author.htb_rank }}</span></div>
         <div class="stat-line"><span class="stat-k">machines</span><span class="stat-v">{{ site.author.htb_pwned }}</span></div>
       </div>
-    </div>
+    </div>-->
 
     <div class="panel">
       <div class="panel-title"><span>$ ls ./tags/</span><span class="pt-icon">▮</span></div>
@@ -77,7 +77,7 @@ layout: default
       </div>
     </div>
 
-    <div class="panel">
+    <!--<div class="panel">
       <div class="panel-title"><span>$ skill --list</span><span class="pt-icon">▮</span></div>
       <div class="panel-body">
         {% assign web_count = 0 %}
@@ -110,7 +110,7 @@ layout: default
           <div class="sk-bar"><div class="sk-fill" style="width:{{ pwn_count | times: 100 | divided_by: total }}%"></div></div>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </aside>
 </div>

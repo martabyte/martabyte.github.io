@@ -35,7 +35,7 @@ author:
       name: Certified Ethical Hacker (Master)
       issuer: EC-Council
       year: 2021
-      wip: true
+      wip: false
   contact:
     - key: github
       val: github.com/martabyte
