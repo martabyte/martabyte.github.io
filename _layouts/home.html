@@ -1,61 +1,138 @@
 ---
-layout: base
+layout: default
 ---
 
-<div class="home">
-  <!--{%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}-->
+{% include matrix.html %}
 
-  {{ content }}
+{% include nav.html %}
 
+<div class="main">
+  <section class="content">
 
-  {% if site.paginate %}
-    {% assign posts = paginator.posts %}
-  {% else %}
-    {% assign posts = site.posts %}
-  {% endif %}
-
-
-  {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
-    <ul class="post-list">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
-      <li>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    {% if site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
+    <div class="section-head">
+      <span class="label">ls -lt ./posts/</span>
+      <div class="lang-toggle">
+        <span class="lt-label">lang:</span>
+        <button class="lang-btn active" onclick="filterLang('all')">all</button>
+        <button class="lang-btn" onclick="filterLang('es')">es</button>
+        <button class="lang-btn" onclick="filterLang('en')">en</button>
       </div>
-    {%- endif %}
+      <span class="line"></span>
+      <span class="count" id="post-count">{{ site.posts | size }} entries :: sorted by date</span>
+    </div>
 
-  {%- endif -%}
+    {% for post in site.posts %}
+    <div class="post-entry" data-lang="{{ post.lang | default: 'es' }}">
+      <div class="pe-top">
+        <div class="pe-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="pe-header">
+          <a class="pe-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <div class="pe-meta">
+            <span class="pe-date">{{ post.date | date: "%Y-%m-%d %H:%M" }}</span>
+            <span class="pe-tag lang-tag">{{ post.lang | default: 'es' }}</span>
+            {% for tag in post.tags %}
+            <span class="pe-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="pe-body">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
+      <div class="pe-footer">
+        <span>size: {{ post.content | strip_html | size | divided_by: 1000 }}K :: read_time: ~{{ post.content | strip_html | number_of_words | divided_by: 200 | plus: 1 }}min</span>
+        <a class="pe-read" href="{{ post.url | relative_url }}">{{ post.slug }}</a>
+      </div>
+    </div>
+    {% endfor %}
 
+  </section>
+
+  <aside class="sidebar">
+
+    <div class="panel">
+      <div class="panel-title"><span>$ whoami</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body">
+        <div class="whoami-line"><span class="k">alias</span><span class="sep">:</span> <span class="v">{{ site.author.alias }}</span></div>
+        <div class="whoami-line"><span class="k">focus</span><span class="sep">:</span> <span class="v">{{ site.author.focus }}</span></div>
+        <div class="whoami-line"><span class="k">certs</span><span class="sep">:</span> <span class="v">{% for cert in site.author.certs %}{% unless cert.wip %}{{ cert.badge }}{% unless forloop.last %} · {% endunless %}{% endunless %}{% endfor %}</span></div>
+        <div class="whoami-line"><span class="k">pgp</span><span class="sep">:</span> <span class="v">{{ site.author.pgp }}</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span>$ cat /proc/blog</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body">
+        <div class="stat-line"><span class="stat-k">total_posts</span><span class="stat-v">{{ site.posts | size | prepend: '00' | slice: -3, 3 }}</span></div>
+        <div class="stat-line"><span class="stat-k">htb_rank</span><span class="stat-v">{{ site.author.htb_rank }}</span></div>
+        <div class="stat-line"><span class="stat-k">machines</span><span class="stat-v">{{ site.author.htb_pwned }}</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span>$ ls ./tags/</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body">
+        <div class="tag-grid">
+          {% assign all_tags = site.posts | map: 'tags' | join: ',' | split: ',' | uniq | sort %}
+          {% for tag in all_tags %}
+          <a class="tag-item" href="/tags/{{ tag }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title"><span>$ skill --list</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body">
+        {% assign web_count = 0 %}
+        {% assign pwn_count = 0 %}
+        {% assign re_count  = 0 %}
+        {% assign net_count = 0 %}
+        {% for post in site.posts %}
+          {% for tag in post.tags %}
+            {% if tag == 'web' or tag == 'sqli' or tag == 'xss' %}{% assign web_count = web_count | plus: 1 %}{% endif %}
+            {% if tag == 'pwn' or tag == 'buffer-overflow' %}{% assign pwn_count = pwn_count | plus: 1 %}{% endif %}
+            {% if tag == 'reversing' or tag == 'ghidra' or tag == 're' %}{% assign re_count = re_count | plus: 1 %}{% endif %}
+            {% if tag == 'network' or tag == 'mitm' %}{% assign net_count = net_count | plus: 1 %}{% endif %}
+          {% endfor %}
+        {% endfor %}
+        {% assign total = web_count | plus: pwn_count | plus: re_count | plus: net_count | plus: 1 %}
+        <div class="sk-row">
+          <div class="sk-top"><span>web</span><span class="pct">{{ web_count | times: 100 | divided_by: total }}%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ web_count | times: 100 | divided_by: total }}%"></div></div>
+        </div>
+        <div class="sk-row">
+          <div class="sk-top"><span>reverse_eng</span><span class="pct">{{ re_count | times: 100 | divided_by: total }}%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ re_count | times: 100 | divided_by: total }}%"></div></div>
+        </div>
+        <div class="sk-row">
+          <div class="sk-top"><span>network</span><span class="pct">{{ net_count | times: 100 | divided_by: total }}%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ net_count | times: 100 | divided_by: total }}%"></div></div>
+        </div>
+        <div class="sk-row">
+          <div class="sk-top"><span>binary_pwn</span><span class="pct">{{ pwn_count | times: 100 | divided_by: total }}%</span></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ pwn_count | times: 100 | divided_by: total }}%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
 </div>
+
+<script>
+  function filterLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang);
+    });
+    const posts = document.querySelectorAll('.post-entry');
+    let visible = 0;
+    posts.forEach(post => {
+      const match = lang === 'all' || post.dataset.lang === lang;
+      post.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    const count = document.getElementById('post-count');
+    if (count) {
+      const suffix = lang === 'all' ? 'sorted by date' : 'lang:' + lang;
+      count.textContent = visible + ' entr' + (visible === 1 ? 'y' : 'ies') + ' :: ' + suffix;
+    }
+  }
+</script>

@@ -1,0 +1,115 @@
+---
+layout: default
+---
+
+<div class="wrapper post-wrapper">
+
+  <div class="breadcrumb mono">
+    <a href="{{ '/' | relative_url }}">~/blog</a>
+    <span class="sep">/</span>
+    <a href="{{ '/writeups' | relative_url }}">writeups</a>
+    <span class="sep">/</span>
+    {% for tag in page.tags limit:1 %}
+    <a href="/tags/{{ tag }}">{{ tag }}</a>
+    <span class="sep">/</span>
+    {% endfor %}
+    <span class="current">{{ page.slug }}</span>
+  </div>
+
+  <article>
+
+    <div class="post-header">
+      <div class="post-meta-top">
+        <span>{{ page.date | date: "%Y-%m-%dT%H:%M:%SZ" }}</span>
+        {% for tag in page.tags %}
+        <span class="post-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="post-title">>>  {{ page.title }}</div>
+      <div class="post-stats mono">
+        size: <span>{{ content | strip_html | size | divided_by: 1000 }}K</span>
+        &nbsp;·&nbsp;
+        read_time: <span>~{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }}min</span>
+        {% if page.difficulty %}
+        &nbsp;·&nbsp; difficulty: <span>{{ page.difficulty }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    {% if page.references %}
+    <div class="references">
+      <h2>referencias</h2>
+      <div class="ref-list">
+        {% for ref in page.references %}
+        <div class="ref-item">
+          <span class="ref-n">[{{ forloop.index }}]</span>
+          <a href="{{ ref.url }}" target="_blank" rel="noopener">{{ ref.title }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </article>
+
+  <aside class="sidebar">
+
+    <!-- TOC -->
+    <div class="panel">
+      <div class="panel-title"><span>$ toc</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body" id="toc">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Post info -->
+    <div class="panel">
+      <div class="panel-title"><span>$ stat post</span><span class="pt-icon">▮</span></div>
+      <div class="panel-body">
+        <div class="info-row"><span class="info-k">date</span><span class="info-v">{{ page.date | date: "%Y-%m-%d" }}</span></div>
+        <div class="info-row"><span class="info-k">read_time</span><span class="info-v">~{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }}min</span></div>
+        {% if page.difficulty %}<div class="info-row"><span class="info-k">difficulty</span><span class="info-v">{{ page.difficulty }}</span></div>{% endif %}
+        {% if page.target_db %}<div class="info-row"><span class="info-k">db</span><span class="info-v">{{ page.target_db }}</span></div>{% endif %}
+      </div>
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="panel">
+      <div class="panel-title"><span>$ ls posts/</span><span class="pt-icon">▮</span></div>
+      <div class="nav-post">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">
+          <span class="np-label">← prev</span>
+          {{ page.previous.title }}
+        </a>
+        {% endif %}
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">
+          <span class="np-label">next →</span>
+          {{ page.next.title }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<script>
+  // Auto-generate TOC from h2 headings
+  const toc     = document.getElementById('toc');
+  const headers = document.querySelectorAll('.prose h2');
+  headers.forEach((h, i) => {
+    const id = 'section-' + i;
+    h.id = id;
+    const item = document.createElement('div');
+    item.className = 'toc-item';
+    item.innerHTML = `<span class="toc-n">0${i+1}</span> ${h.textContent.replace(/^#+\s*/,'')}`;
+    item.onclick = () => h.scrollIntoView({ behavior: 'smooth' });
+    toc.appendChild(item);
+  });
+</script>

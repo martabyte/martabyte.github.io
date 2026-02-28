@@ -1,0 +1,135 @@
+/* =============================================
+   _sass/_variables.scss
+   ============================================= */
+
+:root {
+  --g:    #d0d0d0;
+  --g2:   #888888;
+  --g3:   #2a2a2a;
+  --cyan: #5a8a5a;
+  --yel:  #3d663d;
+  --red:  #cc6666;
+  --bg:   #0d0d0d;
+  --bg2:  #111111;
+  --bg3:  #161616;
+  --dim:  #1e1e1e;
+  --mag:  #aaaaaa;
+}
+
+/* =============================================
+   Base
+   ============================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--g);
+  font-family: 'IBM Plex Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* scanlines */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent 0px, transparent 1px,
+    rgba(0,0,0,0.12) 1px, rgba(0,0,0,0.12) 2px
+  );
+  pointer-events: none; z-index: 1000;
+}
+
+/* CRT vignette */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none; z-index: 1001;
+}
+
+/* =============================================
+   Shared utilities
+   ============================================= */
+.mono { font-family: 'Share Tech Mono', monospace; }
+
+.section-head {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--g2); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-head::before { content: '##'; color: var(--cyan); margin-right: 4px; }
+.section-head::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--g3), transparent);
+}
+
+.panel { border: 1px solid var(--g3); background: var(--bg2); overflow: hidden; }
+.panel-title {
+  background: var(--g3); padding: 5px 10px;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  color: var(--g); letter-spacing: 2px; text-transform: uppercase;
+  border-bottom: 1px solid var(--dim);
+  display: flex; justify-content: space-between;
+}
+.panel-title .pt-icon { color: var(--cyan); }
+.panel-body { padding: 12px 10px; font-family: 'Share Tech Mono', monospace; }
+
+.post-tag {
+  font-size: 10px; color: var(--cyan);
+  border: 1px solid rgba(90,138,90,0.35);
+  padding: 0 6px; background: rgba(90,138,90,0.07);
+  font-family: 'Share Tech Mono', monospace;
+}
+.post-tag::before { content: '['; color: rgba(90,138,90,0.5); }
+.post-tag::after  { content: ']'; color: rgba(90,138,90,0.5); }
+
+.cursor {
+  display: inline-block; width: 8px; height: 12px;
+  background: var(--g2); margin-left: 2px;
+  vertical-align: middle; animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ── LANG TOGGLE ── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  margin-left: 10px;
+}
+.lang-toggle .lt-label {
+  color: var(--g2);
+  font-size: 10px;
+  margin-right: 8px;
+  letter-spacing: 1px;
+}
+.lang-btn {
+  color: var(--g2);
+  border: 1px solid var(--g3);
+  padding: 2px 8px;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  transition: all 0.15s;
+}
+.lang-btn::before { content: '['; color: var(--g3); }
+.lang-btn::after  { content: ']'; color: var(--g3); }
+.lang-btn:first-of-type { border-right: none; }
+.lang-btn.active {
+  color: var(--cyan);
+  background: rgba(90,138,90,0.08);
+  border-color: rgba(90,138,90,0.4);
+}
+.lang-btn.active::before { color: rgba(90,138,90,0.5); }
+.lang-btn.active::after  { color: rgba(90,138,90,0.5); }
+.lang-btn:hover:not(.active) {
+  color: var(--g);
+  border-color: var(--g2);
+}
+.post-entry.hidden { display: none; }

@@ -1,0 +1,35 @@
+<nav class="nav-bar">
+  <div class="nav-prompt">
+    <span class="u">root</span><span class="s">@</span><span class="h">kali</span><span class="s">:</span><span class="p">~/blog</span><span class="s">#</span>&nbsp;
+  </div>
+  <div class="nav-links">
+    <a href="{{ '/' | relative_url }}"
+       class="{% if page.url == '/' %}active{% endif %}">
+      <span class="num">F1</span>index
+    </a>
+    <a href="{{ '/whoami' | relative_url }}"
+       class="{% if page.url contains 'whoami' %}active{% endif %}">
+      <span class="num">F2</span>whoami
+    </a>
+    <a href="{{ '/writeups' | relative_url }}"
+       class="{% if page.url contains 'writeups' %}active{% endif %}">
+      <span class="num">F3</span>writeups
+    </a>
+    <a href="{{ '/tools' | relative_url }}"
+       class="{% if page.url contains 'tools' %}active{% endif %}">
+      <span class="num">F4</span>tools
+    </a>
+    <a href="{{ '/contact' | relative_url }}"
+       class="{% if page.url contains 'contact' %}active{% endif %}">
+      <span class="num">F5</span>contact
+    </a>
+  </div>
+  <div class="nav-right">
+    <div class="blink-dot"></div>
+    <span>ONLINE</span>
+    <span class="sb-sep">|</span>
+    <span id="nav-time">00:00:00</span>
+    <span class="sb-sep">|</span>
+    <span>TLS:OK</span>
+  </div>
+</nav>

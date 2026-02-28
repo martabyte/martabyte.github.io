@@ -1,5 +1,4 @@
 ---
-title: /
 layout: home
-permalink: /
+title: ""
 ---

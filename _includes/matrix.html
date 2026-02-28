@@ -1,0 +1,84 @@
+<section class="hero">
+  <canvas id="matrix-canvas"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-scanlines"></div>
+  <div class="hero-fade"></div>
+
+  <div id="boot-overlay">
+    <div class="boot-line">GRUB 2.06 loading...</div>
+    <div class="boot-line ok">Linux 6.1.0-kali9-amd64 #1 SMP PREEMPT_DYNAMIC</div>
+    <div class="boot-line">[    0.000000] Initializing cgroup subsys cpuset</div>
+    <div class="boot-line">[    0.182943] ACPI: IRQ0 used by override</div>
+    <div class="boot-line ok">[    0.521334] NET: Registered PF_INET protocol family</div>
+    <div class="boot-line warn">[    0.891221] WARNING: iptables legacy detected, use nftables</div>
+    <div class="boot-line ok">[    1.441203] Started OpenBSD Secure Shell server</div>
+    <div class="boot-line ok">[    1.882341] Started h4ck3r_blog.service</div>
+    <div class="boot-line warn">[    2.001000] NOTICE: 1 unauthenticated connection attempt blocked</div>
+    <div class="boot-line">&nbsp;</div>
+    <div class="boot-line">h4ck3r-blog login: <span style="color:var(--cyan)">root</span></div>
+    <div class="boot-line">Password: <span style="color:var(--bg)">············</span></div>
+    <div class="boot-line ok">Last login: {{ site.time | date: "%a %b %d %H:%M:%S %Y" }}</div>
+    <div class="boot-line">&nbsp;</div>
+    <div class="boot-line ok">✓  Blog loaded. Welcome back.</div>
+  </div>
+
+  <div class="hero-content" id="ascii-banner">
+    <h1 class="site-title">{{ site.title }}</h1>
+    <div class="site-subtitle">
+      root@kali:~$ ./whoami — {{ site.description }}<span class="cursor"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Boot sequence
+  const lines   = document.querySelectorAll('.boot-line');
+  const overlay = document.getElementById('boot-overlay');
+  const banner  = document.getElementById('ascii-banner');
+  let i = 0;
+  function showNext() {
+    if (i < lines.length) {
+      lines[i].classList.add('show');
+      i++;
+      setTimeout(showNext, i < 5 ? 100 : 55);
+    } else {
+      setTimeout(() => {
+        overlay.classList.add('done');
+        banner.classList.add('show');
+      }, 400);
+    }
+  }
+  setTimeout(showNext, 150);
+
+  // Matrix rain
+  const canvas = document.getElementById('matrix-canvas');
+  const ctx    = canvas.getContext('2d');
+  const FONT   = 13;
+  const CHARS  = 'アイウエオカキクケコ01234567890ABCDEF<>{}|/\\!@#$%';
+  let W, H, cols, drops;
+  function init() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    cols  = Math.floor(W / FONT);
+    drops = Array.from({length: cols}, () => Math.random() * -50);
+  }
+  function draw() {
+    ctx.fillStyle = 'rgba(6,10,6,0.06)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.font = FONT + 'px Share Tech Mono';
+    for (let i = 0; i < cols; i++) {
+      const ch = CHARS[Math.floor(Math.random() * CHARS.length)];
+      const r  = Math.random();
+      if      (r > 0.98) ctx.fillStyle = '#aaddaa';
+      else if (r > 0.75) ctx.fillStyle = '#5a8a5a';
+      else if (r > 0.4)  ctx.fillStyle = '#2d5a2d';
+      else               ctx.fillStyle = '#162816';
+      ctx.fillText(ch, i * FONT, drops[i] * FONT);
+      if (drops[i] * FONT > H && Math.random() > 0.97) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  init();
+  window.addEventListener('resize', init);
+  setInterval(draw, 45);
+</script>
