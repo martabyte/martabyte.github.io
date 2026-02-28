@@ -812,4 +812,27 @@ body::after {
   .htb-row {
     overflow-x: hidden;
   }
+
+  .nav{
+    flex-wrap: wrap;
+  }
+
+  .nav-prompt{
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--g2);
+  }
+
+  .nav-links{
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  .nav-right{
+    display: flex;
+    border-left: none;
+    border-top: 1px solid var(--g3);
+    width: 100%;
+    padding: 4px 14px;
+  }
 }

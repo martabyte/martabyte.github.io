@@ -20,19 +20,19 @@ permalink: /whoami/
       <div class="bio-block">
         <div class="bio-header">stdout — user.profile</div>
         <div class="bio-body">
-          <div class="bio-line"><span class="bio-k">alias</span><span class="bio-v">{{ site.author.alias }}</span></div>
-          <div class="bio-line"><span class="bio-k">focus</span><span class="bio-v">{{ site.author.focus }}</span></div>
-          <div class="bio-line"><span class="bio-k">deployed_at</span><span class="bio-v">{{ site.author.deployed_at }}</span></div>
+          <div class="bio-line"><span class="bio-k">alias </span><span class="bio-v">{{ site.author.alias }}</span></div>
+          <div class="bio-line"><span class="bio-k">focus </span><span class="bio-v">{{ site.author.focus }}</span></div>
+          <div class="bio-line"><span class="bio-k">deployed_at </span><span class="bio-v">{{ site.author.deployed_at }}</span></div>
           <div class="bio-sep"></div>
           <div class="bio-line">
-            <span class="bio-k">last_commit</span>
+            <span class="bio-k">last_commit </span>
             <span class="bio-v">{{ site.posts.first.title }}</span>
           </div>
-          <div class="bio-line"><span class="bio-k">0days</span><span class="bio-v fun">0 &nbsp;<span style="color:var(--g2);font-size:10px">// not yet ;)</span></span></div>
-          <div class="bio-line"><span class="bio-k">coffee_dependency</span><span class="bio-v warn">{{ site.author.coffee }}</span></div>
-          <div class="bio-line"><span class="bio-k">soundtrack</span><span class="bio-v">{{ site.author.soundtrack }}</span></div>
+          <div class="bio-line"><span class="bio-k">0days </span><span class="bio-v fun">0 &nbsp;<span style="color:var(--g2);font-size:10px">// not yet ;)</span></span></div>
+          <div class="bio-line"><span class="bio-k">coffee_dependency </span><span class="bio-v warn">{{ site.author.coffee }}</span></div>
+          <div class="bio-line"><span class="bio-k">soundtrack </span><span class="bio-v">{{ site.author.soundtrack }}</span></div>
           <div class="bio-sep"></div>
-          <div class="bio-line"><span class="bio-k">bio</span><span class="bio-v" style="color:var(--g2)">red team operator. soy concha, entro.</span></div>
+          <div class="bio-line"><span class="bio-k"></span><span class="bio-v" style="color:var(--g2)">red team operator. soy concha, entro.</span></div>
         </div>
       </div>
     </div>
