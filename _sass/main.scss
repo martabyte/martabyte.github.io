@@ -735,3 +735,55 @@ body::after {
 .ct-val { color: var(--g2); font-size: 12px; }
 .ct-pgp { margin-top: 8px; }
 .pgp-fp { color: var(--g); font-size: 11px; letter-spacing: 1px; word-break: break-all; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+
+  /* post y whoami — colapsar a una columna */
+  .post-wrapper,
+  .whoami-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0 16px 60px;
+    gap: 24px;
+  }
+
+  /* breadcrumb ocupa toda la fila */
+  .breadcrumb {
+    grid-column: 1;
+  }
+
+  /* sidebar debajo del contenido */
+  .sidebar {
+    padding: 0;
+  }
+
+  /* index — colapsar también */
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    border-right: none;
+    border-bottom: 1px solid var(--dim);
+    padding: 16px;
+  }
+
+  /* nav — ocultar F-keys en móvil */
+  .nav-links a .num { display: none; }
+  .nav-links a { padding: 5px 10px; font-size: 10px; }
+  .nav-right { display: none; }
+
+  /* hero title más pequeño */
+  .site-title { font-size: 42px; }
+
+  /* post title más pequeño */
+  .post-title { font-size: 30px; }
+  .page-title { font-size: 38px; }
+
+  /* htb grid en whoami — una columna */
+  .htb-mini-grid { grid-template-columns: 1fr 1fr; }
+
+  /* contact centrada */
+  .contact-page { padding: 20px 16px; }
+}
