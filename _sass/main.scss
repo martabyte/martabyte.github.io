@@ -97,7 +97,7 @@ body::after {
    ============================================= */
 .hero {
   position: relative; width: 100%;
-  height: 200px; overflow: hidden;
+  height: 150px; overflow: hidden;
 }
 #matrix-canvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -484,13 +484,13 @@ body::after {
 .page-header { grid-column: 1 / -1; margin-bottom: 8px; }
 .page-title {
   font-family: 'VT323', monospace; font-size: 56px;
-  color: var(--g); letter-spacing: 2px; line-height: 1; margin-bottom: 4px;
+  color: var(--g); letter-spacing: 2px; line-height: 1; margin-bottom: 3px;
 }
 .page-title::before { content: '$ '; color: var(--g2); }
 .page-subtitle {
   font-family: 'Share Tech Mono', monospace; font-size: 11px;
   color: var(--g2); padding-bottom: 20px; border-bottom: 1px solid var(--dim);
-  margin-bottom: 32px;
+  margin-bottom: 21px;
 }
 
 .section { margin-bottom: 36px; }
