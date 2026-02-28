@@ -4,16 +4,14 @@ title: tools
 permalink: /tools/
 ---
 
-<div class="page-header" style="grid-column: 1 / -1">
+<div class="main">
+  <div class="page-header" style="grid-column: 1 / -1">
     <!--<div class="page-title">whoami</div>-->
     <div class="page-subtitle mono">
       afr0dita@m0unt-0lympus:~/blog# cat ./whoami.md<span class="cursor"></span>
     </div>
   </div>
-
-<div class="main">
   <section class="content">
-
     <div class="section-head">
       <span class="label">ls -lt ./tools/</span>
       <span class="line"></span>
