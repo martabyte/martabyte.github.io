@@ -739,18 +739,6 @@ body::after {
 .ct-pgp { margin-top: 8px; }
 .pgp-fp { color: var(--g); font-size: 11px; letter-spacing: 1px; word-break: break-all; }
 
-.article {
-  max-width: 100%;
-  overflow-x: hidden;
-  word-break: break-word;
-}
-
-.article * {
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-}
-
 /* =============================================
    RESPONSIVE
    ============================================= */
