@@ -17,8 +17,7 @@ permalink: /contact/
     <div class="ct-body">
       <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# cat ./reach_me.txt</div>
       <div class="ct-line">&nbsp;</div>
-      <div class="ct-line comment"># preferably encrypted.</div>
-      <div class="ct-line comment"># i read everything, i reply to what deserves a reply.</div>
+      <div class="ct-line comment"># preferably encrypted - i'll read it, but don't expect a reply</div>
       <div class="ct-line">&nbsp;</div>
 
       <a class="ct-link" href="mailto:{{ site.author.contact[3].url | remove: 'mailto:' }}">
@@ -33,11 +32,6 @@ permalink: /contact/
         <span class="ct-val">{{ site.author.contact[0].val }}</span>
       </a>
 
-      <div class="ct-line">&nbsp;</div>
-      <div class="ct-pgp">
-        <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# gpg --fingerprint {{ site.author.pgp }}</div>
-        <div class="ct-line pgp-fp">{{ site.author.pgp_fingerprint }}</div>
-      </div>
       <div class="ct-line">&nbsp;</div>
       <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# <span class="cursor"></span></div>
     </div>

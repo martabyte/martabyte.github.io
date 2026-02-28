@@ -6,18 +6,17 @@ permalink: /whoami/
 
 <div class="wrapper whoami-wrapper">
 
-  <div class="page-header" style="grid-column: 1 / -1">
+  <!--<div class="page-header" style="grid-column: 1 / -1">
     <div class="page-title">whoami</div>
     <div class="page-subtitle mono">
       afr0dita@m0unt-0lympus:~/blog# cat ./whoami.md<span class="cursor"></span>
     </div>
-  </div>
+  </div>-->
 
   <main>
-
     <!-- BIO -->
     <div class="section">
-      <div class="section-head">identificación</div>
+      <div class="section-head">whoami</div>
       <div class="bio-block">
         <div class="bio-header">stdout — user.profile</div>
         <div class="bio-body">
@@ -40,7 +39,7 @@ permalink: /whoami/
 
     <!-- CERTS -->
     <div class="section">
-      <div class="section-head">certificaciones</div>
+      <div class="section-head">certs</div>
       <div class="cert-list">
         {% for cert in site.author.certs %}
         <div class="cert-item{% if cert.wip %} wip{% endif %}">
@@ -57,7 +56,7 @@ permalink: /whoami/
 
     <!-- CONTACT -->
     <div class="section">
-      <div class="section-head">contacto</div>
+      <div class="section-head">contact</div>
       <div class="contact-list">
         {% for link in site.author.contact %}
         <a class="contact-item" href="{{ link.url }}">
@@ -66,17 +65,16 @@ permalink: /whoami/
           <span class="ci-arrow">→</span>
         </a>
         {% endfor %}
-        <div class="pgp-block">
+        <!--<div class="pgp-block">
           <div class="pgp-header">$ gpg --fingerprint {{ site.author.pgp }}</div>
           <div class="pgp-body">
             pub &nbsp; rsa4096 2022-11-04 [SC]<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pgp-key">{{ site.author.pgp_fingerprint }}</span><br>
             uid &nbsp; [ultimate] {{ site.author.alias }} &lt;{{ site.author.contact[3].url | remove: 'mailto:' }}&gt;
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
-
   </main>
 
   <!-- HTB SIDEBAR -->
