@@ -8,7 +8,7 @@ permalink: /writeups/
   <div class="page-header" style="grid-column: 1 / -1">
       <!--<div class="page-title">whoami</div>-->
       <div class="page-subtitle mono">
-        afr0dita@m0unt-0lympus:~/blog# cat ./whoami.md<span class="cursor"></span>
+        afr0dita@m0unt-0lympus:~/# cat ./whoami.md<span class="cursor"></span>
       </div>
     </div>
   <section class="content">
