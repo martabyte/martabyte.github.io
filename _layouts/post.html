@@ -2,19 +2,24 @@
 layout: default
 ---
 
-<div class="wrapper post-wrapper">
-
-  <div class="breadcrumb mono">
-    <a href="{{ '/' | relative_url }}">~/blog</a>
-    <span class="sep">/</span>
-    <a href="{{ '/writeups' | relative_url }}">writeups</a>
-    <span class="sep">/</span>
-    {% for tag in page.tags limit:1 %}
-    <a href="/tags/{{ tag }}">{{ tag }}</a>
-    <span class="sep">/</span>
-    {% endfor %}
-    <span class="current">{{ page.slug }}</span>
+<div class="main" style="max-width: 100%;">
+  <div class="page-header" style="grid-column: 1 / -1">
+    <!--<div class="page-title">whoami</div>-->
+    <div class="page-subtitle mono">
+      afr0dita@m0unt-0lympus:~/blog# cat ./whoami.md<span class="cursor"></span>
+    </div>
   </div>
+
+  <div class="wrapper post-wrapper">
+    <div class="breadcrumb mono">
+      <a href="{{ '/' | relative_url }}">~/</a>
+      <span class="sep">/</span>
+      {% for tag in page.tags limit:1 %}
+      <a href="/tags/{{ tag }}">{{ tag }}</a>
+      <span class="sep">/</span>
+      {% endfor %}
+      <span class="current">{{ page.slug }}</span>
+    </div>
 
   <article>
 
@@ -113,3 +118,4 @@ layout: default
     toc.appendChild(item);
   });
 </script>
+</div>
