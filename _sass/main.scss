@@ -747,6 +747,7 @@ body::after {
 
 .article * {
   max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -829,6 +830,8 @@ body::after {
 
   .article {
     max-width: 100%;
+    width: 100%;
+    min-width: 0;
     overflow-x: hidden;
     word-break: break-word;
   }
