@@ -1,54 +1,54 @@
-title: h4ck3r_blog
-description: security research · ctf · exploit dev · writeups
-url: "https://tuusuario.github.io"
+title: martabyte
+description: red team operator · ctf · ios · learning
+url: "https://martabyte.github.io"
 baseurl: ""
 
 author:
-  alias: h4ck3r
-  focus: web exploitation · pwn · re
-  deployed_at: acme security labs
+  alias: afr0dita
+  focus: web exploitation · ad · ios
+  deployed_at: blackarrow
   pgp: 0xDEADBEEF
   pgp_fingerprint: "DEAD BEEF 1337 C0DE CAFE BABE F00D D00D 0000 0001"
   coffee: CRITICAL
-  soundtrack: Metallica · Tool · Rammstein
-  htb_rank: PRO HACKER
-  htb_pwned: 183
-  htb_challenges: 47
-  htb_ubloods: 12
-  htb_rbloods: 7
-  htb_points: "14,820"
-  htb_top: top 1%
+  soundtrack: L7 · Bikini Kill · Led Zeppelin
+  htb_rank: HACKER
+  htb_pwned: 24
+  htb_challenges: 12
+  htb_ubloods: 0
+  htb_rbloods: 0
+  htb_points: x
+  htb_top: x
   htb_best: web · forensics
-  htb_since: "2022-11-04"
+  htb_since: "2018-04-14"
   certs:
-    - badge: OSCP
-      name: Offensive Security Certified Professional
+    - badge: OSCP+
+      name: Offensive Security Certified Professional+
       issuer: Offensive Security
-      year: 2024
-      wip: false
-    - badge: eWPT
-      name: Web Application Penetration Tester
-      issuer: INE Security
-      year: 2023
-      wip: false
-    - badge: OSED
-      name: Offensive Security Exploit Developer
-      issuer: Offensive Security — en progreso
       year: 2025
+      wip: false
+    - badge: CRTP
+      name: Certified Red Team Professional
+      issuer: Pentester Academy
+      year: 2021
+      wip: false
+    - badge: CEH (Master)
+      name: Certified Ethical Hacker (Master)
+      issuer: EC-Council
+      year: 2021
       wip: true
   contact:
     - key: github
-      val: github.com/tuusuario
-      url: https://github.com/tuusuario
+      val: github.com/martabyte
+      url: https://github.com/martabyte
     - key: twitter/x
-      val: "@h4ck3r"
-      url: https://twitter.com/h4ck3r
+      val: "@martabyte"
+      url: https://twitter.com/martabyte
     - key: htb
-      val: app.hackthebox.com/profile/h4ck3r
-      url: https://app.hackthebox.com/profile/h4ck3r
+      val: app.hackthebox.com/profile/aphr0dite
+      url: https://app.hackthebox.com/profile/aphr0dite
     - key: email
-      val: h4ck3r [at] proton [dot] me
-      url: mailto:h4ck3r@proton.me
+      val: afr0dita [at] proton [dot] me
+      url: mailto:afr0dita@proton.me
 
 plugins:
   - jekyll-feed

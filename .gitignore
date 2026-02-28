@@ -6,3 +6,4 @@ vendor
 .old_Gemfile
 Gemfile.lock
 _old
+README.md
