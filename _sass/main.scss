@@ -760,8 +760,13 @@ body::after {
   }
 
   /* sidebar debajo del contenido */
-  .sidebar {
+  .post-wrapper .sidebar {
     padding: 0 !important;
+    order: -1;
+  }
+
+  .post-wrapper .article{
+    order: 0;
   }
 
   /* index — colapsar también */

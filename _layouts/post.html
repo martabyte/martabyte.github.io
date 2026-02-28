@@ -63,7 +63,6 @@ layout: default
   </article>
 
   <aside class="sidebar">
-
     <!-- TOC -->
     <div class="panel">
       <div class="panel-title"><span>$ toc</span><span class="pt-icon">▮</span></div>
@@ -71,37 +70,6 @@ layout: default
         <!-- Populated by JS -->
       </div>
     </div>
-
-    <!-- Post info -->
-    <div class="panel">
-      <div class="panel-title"><span>$ stat post</span><span class="pt-icon">▮</span></div>
-      <div class="panel-body">
-        <div class="info-row"><span class="info-k">date</span><span class="info-v">{{ page.date | date: "%Y-%m-%d" }}</span></div>
-        <div class="info-row"><span class="info-k">read_time</span><span class="info-v">~{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }}min</span></div>
-        {% if page.difficulty %}<div class="info-row"><span class="info-k">difficulty</span><span class="info-v">{{ page.difficulty }}</span></div>{% endif %}
-        {% if page.target_db %}<div class="info-row"><span class="info-k">db</span><span class="info-v">{{ page.target_db }}</span></div>{% endif %}
-      </div>
-    </div>
-
-    <!-- Prev / Next -->
-    <div class="panel">
-      <div class="panel-title"><span>$ ls posts/</span><span class="pt-icon">▮</span></div>
-      <div class="nav-post">
-        {% if page.previous %}
-        <a href="{{ page.previous.url | relative_url }}">
-          <span class="np-label">← prev</span>
-          {{ page.previous.title }}
-        </a>
-        {% endif %}
-        {% if page.next %}
-        <a href="{{ page.next.url | relative_url }}">
-          <span class="np-label">next →</span>
-          {{ page.next.title }}
-        </a>
-        {% endif %}
-      </div>
-    </div>
-
   </aside>
 </div>
 
