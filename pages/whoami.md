@@ -4,8 +4,8 @@ title: whoami
 permalink: /whoami/
 ---
 
-<div class="wrapper whoami-wrapper">
-
+<!--<div class="wrapper whoami-wrapper">-->
+<div class="main">
   <div class="page-header" style="grid-column: 1 / -1">
     <!--<div class="page-title">whoami</div>-->
     <div class="page-subtitle mono">
@@ -78,7 +78,7 @@ permalink: /whoami/
   </main>
 
   <!-- HTB SIDEBAR -->
-  <aside class="sidebar">
+  <!--<aside class="sidebar">
     <div class="panel">
       <div class="panel-title"><span>$ htb --stats</span><span class="pt-icon">▮</span></div>
       <div class="panel-body">
@@ -107,6 +107,6 @@ permalink: /whoami/
         <div class="htb-row"><span class="hk">since</span><span class="hv">{{ site.author.htb_since }}</span></div>
       </div>
     </div>
-  </aside>
+  </aside>-->
 
 </div>
