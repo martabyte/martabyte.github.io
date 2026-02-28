@@ -741,14 +741,12 @@ body::after {
    ============================================= */
 @media (max-width: 1460px) {
 
-  body {background: red !important;}
-
   /* post y whoami — colapsar a una columna */
   .post-wrapper,
   .whoami-wrapper {
-    grid-template-columns: 1fr;
-    padding: 0 16px 60px;
-    gap: 24px;
+    grid-template-columns: 1fr !important;
+    padding: 0 16px 60px !important;
+    gap: 24px !important;
   }
 
   /* breadcrumb ocupa toda la fila */
@@ -758,7 +756,7 @@ body::after {
 
   /* sidebar debajo del contenido */
   .sidebar {
-    padding: 0;
+    padding: 0 !important;
   }
 
   /* index — colapsar también */
@@ -768,7 +766,7 @@ body::after {
   .content {
     border-right: none;
     border-bottom: 1px solid var(--dim);
-    padding: 16px;
+    padding: 16px !important;
   }
 
   /* nav — ocultar F-keys en móvil */
@@ -777,15 +775,15 @@ body::after {
   .nav-right { display: none; }
 
   /* hero title más pequeño */
-  .site-title { font-size: 42px; }
+  .site-title { font-size: 42px !important; }
 
   /* post title más pequeño */
-  .post-title { font-size: 30px; }
-  .page-title { font-size: 38px; }
+  .post-title { font-size: 30px !important; }
+  .page-title { font-size: 38px !important; }
 
   /* htb grid en whoami — una columna */
-  .htb-mini-grid { grid-template-columns: 1fr 1fr; }
+  .htb-mini-grid { grid-template-columns: 1fr 1fr !important; }
 
   /* contact centrada */
-  .contact-page { padding: 20px 16px; }
+  .contact-page { padding: 20px 16px !important; }
 }
