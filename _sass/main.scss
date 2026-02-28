@@ -815,6 +815,17 @@ body::after {
     overflow-x: hidden;
   }
 
+  .article {
+    max-width: 100%;
+    overflow-x: hidden;
+    word-break: break-word;
+  }
+
+  .article * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .post-header,
   .prose{
     max-width: 100% !important;
