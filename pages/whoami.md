@@ -9,7 +9,7 @@ permalink: /whoami/
   <div class="page-header" style="grid-column: 1 / -1">
     <div class="page-title">whoami</div>
     <div class="page-subtitle mono">
-      root@kali:~/blog# cat ./about.md<span class="cursor"></span>
+      afr0dita@m0unt-0lympus:~/blog# cat ./whoami.md<span class="cursor"></span>
     </div>
   </div>
 
@@ -27,13 +27,13 @@ permalink: /whoami/
           <div class="bio-sep"></div>
           <div class="bio-line">
             <span class="bio-k">last_commit</span>
-            <span class="bio-v">{{ site.posts.first.date | date: "%Y-%m-%d" }} — {{ site.posts.first.title }}</span>
+            <span class="bio-v">{{ site.posts.first.title }}</span>
           </div>
           <div class="bio-line"><span class="bio-k">0days</span><span class="bio-v fun">0 &nbsp;<span style="color:var(--g2);font-size:10px">// not yet ;)</span></span></div>
           <div class="bio-line"><span class="bio-k">coffee_dependency</span><span class="bio-v warn">{{ site.author.coffee }}</span></div>
           <div class="bio-line"><span class="bio-k">soundtrack</span><span class="bio-v">{{ site.author.soundtrack }}</span></div>
           <div class="bio-sep"></div>
-          <div class="bio-line"><span class="bio-k">bio</span><span class="bio-v" style="color:var(--g2)">security researcher. aprendo rompiendo cosas.</span></div>
+          <div class="bio-line"><span class="bio-k">bio</span><span class="bio-v" style="color:var(--g2)">red team operator. soy concha, entro.</span></div>
         </div>
       </div>
     </div>
