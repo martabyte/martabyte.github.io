@@ -62,7 +62,9 @@ body::after {
   border-bottom: 1px solid var(--g3);
   display: flex; align-items: stretch;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; overflow: hidden;
+  font-size: 11px; 
+  //overflow: hidden;
+  overflow-x: auto;
 }
 .nav-prompt {
   padding: 5px 14px; background: var(--g3);
@@ -740,7 +742,7 @@ body::after {
 /* =============================================
    RESPONSIVE
    ============================================= */
-@media (max-width: 1460px) {
+@media (max-width: 900px) {
 
   /* post y whoami — colapsar a una columna */
   .post-wrapper,
@@ -811,28 +813,5 @@ body::after {
   .htb-details,
   .htb-row {
     overflow-x: hidden;
-  }
-
-  .nav{
-    flex-wrap: wrap;
-  }
-
-  .nav-prompt{
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--g2);
-  }
-
-  .nav-links{
-    flex-wrap: wrap;
-    flex: 1;
-  }
-
-  .nav-right{
-    display: flex;
-    border-left: none;
-    border-top: 1px solid var(--g3);
-    width: 100%;
-    padding: 4px 14px;
   }
 }
