@@ -814,4 +814,10 @@ body::after {
   .htb-row {
     overflow-x: hidden;
   }
+
+  .post-header,
+  .prose{
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 }
