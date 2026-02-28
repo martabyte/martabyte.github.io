@@ -11,11 +11,11 @@ permalink: /contact/
       <span class="ct-dot" style="background:var(--red)"></span>
       <span class="ct-dot" style="background:var(--g2)"></span>
       <span class="ct-dot" style="background:var(--cyan)"></span>
-      <span class="ct-title">root@kali:~/contact</span>
+      <span class="ct-title">afr0dita@m0unt-0lympus:~/contact</span>
     </div>
 
     <div class="ct-body">
-      <div class="ct-line dim">root@kali:~/contact# cat ./reach_me.txt</div>
+      <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# cat ./reach_me.txt</div>
       <div class="ct-line">&nbsp;</div>
       <div class="ct-line comment"># preferably encrypted.</div>
       <div class="ct-line comment"># i read everything, i reply to what deserves a reply.</div>
@@ -35,11 +35,11 @@ permalink: /contact/
 
       <div class="ct-line">&nbsp;</div>
       <div class="ct-pgp">
-        <div class="ct-line dim">root@kali:~/contact# gpg --fingerprint {{ site.author.pgp }}</div>
+        <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# gpg --fingerprint {{ site.author.pgp }}</div>
         <div class="ct-line pgp-fp">{{ site.author.pgp_fingerprint }}</div>
       </div>
       <div class="ct-line">&nbsp;</div>
-      <div class="ct-line dim">root@kali:~/contact# <span class="cursor"></span></div>
+      <div class="ct-line dim">afr0dita@m0unt-0lympus:~/contact# <span class="cursor"></span></div>
     </div>
 
   </div>

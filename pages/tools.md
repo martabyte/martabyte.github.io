@@ -10,7 +10,7 @@ permalink: /tools/
     <div class="section-head">
       <span class="label">ls -lt ./tools/</span>
       <span class="line"></span>
-      <span class="count">{{ site.tools | size }} tools :: github.com/tuusuario</span>
+      <span class="count">{{ site.tools | size }} tools :: github.com/martabyte</span>
     </div>
 
     {% for tool in site.tools %}

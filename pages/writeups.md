@@ -11,7 +11,7 @@ permalink: /writeups/
       <span class="label">ls -lt ./writeups/</span>
       <div class="lang-toggle">
         <span class="lt-label">lang:</span>
-        <button class="lang-btn active" onclick="filterLang('all')">all</button>
+        <!--<button class="lang-btn active" onclick="filterLang('all')">all</button>-->
         <button class="lang-btn" onclick="filterLang('es')">es</button>
         <button class="lang-btn" onclick="filterLang('en')">en</button>
       </div>
@@ -98,4 +98,5 @@ permalink: /writeups/
       count.textContent = visible + ' entr' + (visible === 1 ? 'y' : 'ies') + ' :: ' + suffix;
     }
   }
+  filterLang('es');
 </script>
