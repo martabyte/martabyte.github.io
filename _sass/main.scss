@@ -741,6 +741,8 @@ body::after {
    ============================================= */
 @media (max-width: 1460px) {
 
+  body {background: red !important;}
+
   /* post y whoami — colapsar a una columna */
   .post-wrapper,
   .whoami-wrapper {
