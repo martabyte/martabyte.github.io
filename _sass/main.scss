@@ -762,6 +762,7 @@ body::after {
     padding: 0 16px 60px !important;
     gap: 24px !important;
     overflow-x: hidden;
+    max-width: 100% !important;
   }
 
   /* breadcrumb ocupa toda la fila */
