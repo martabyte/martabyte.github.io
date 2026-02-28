@@ -82,4 +82,30 @@ tools:
     tags: [web, entra-id]
     url: 
 
+  - name: blindsqlieitor 
+    desc: Simple Blind SQL Injection vulnerability finder
+    lang: python
+    status: released
+    tags: [bash, python, blind-sqli]
+    url: https://github.com/martabyte/blindsqlieitor
   
+  - name: simple-winpy-keylogger 
+    desc: Simple keylogger using Windows APIs
+    lang: python
+    status: released
+    tags: [python, keylogger]
+    url: https://github.com/martabyte/simple-winpy-keylogger
+
+  - name: viewstate-decoder 
+    desc: Quick python script to decode ASP.NET ViewState
+    lang: python
+    status: released
+    tags: [bash, python, asp-net]
+    url: https://github.com/martabyte/viewstate-decoder
+
+  - name: testssl-check 
+    desc: Automatic testing with openssl and nmap of SSL vulnerabilities found in testssl
+    lang: bash
+    status: released
+    tags: [bash, ssl]
+    url: https://github.com/martabyte/testssl-check
