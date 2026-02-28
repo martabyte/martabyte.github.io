@@ -762,11 +762,11 @@ body::after {
   /* sidebar debajo del contenido */
   .post-wrapper .sidebar {
     padding: 0 !important;
-    order: -1;
+    order: 1;
   }
 
   .post-wrapper .article{
-    order: 0;
+    order: 2;
   }
 
   /* index — colapsar también */
