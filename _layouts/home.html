@@ -97,7 +97,7 @@ layout: default
         {% assign total = web_count | plus: pwn_count | plus: re_count | plus: net_count | plus: 1 %}
         <div class="sk-row">
           <div class="sk-top"><span>web</span><span class="pct">{{ web_count | times: 100 | divided_by: total }}%</span></div>
-          <div class="sk-bar"><div class="sk-fill" style="width:{{ web_count | times: 100 | divided_by: total | append: '%' }}"></div></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ web_count | times: 100 | divided_by: total }}%"></div></div>
         </div>
         <div class="sk-row">
           <div class="sk-top"><span>reverse_eng</span><span class="pct">{{ re_count | times: 100 | divided_by: total }}%</span></div>
