@@ -13,12 +13,12 @@ layout: default
       <span class="label">ls -lt ./posts/</span>
       <div class="lang-toggle">
         <span class="lt-label">lang:</span>
-        <button class="lang-btn active" onclick="filterLang('all')">all</button>
-        <button class="lang-btn" onclick="filterLang('es')">es</button>
+        <!--<button class="lang-btn active" onclick="filterLang('all')">all</button>-->
+        <button class="lang-btn active" onclick="filterLang('es')">es</button>
         <button class="lang-btn" onclick="filterLang('en')">en</button>
       </div>
       <span class="line"></span>
-      <span class="count" id="post-count">{{ site.posts | size }} entries :: sorted by date</span>
+      <span class="count" id="post-count">{{ site.posts | where: "lang", "es" | size }} entries :: lang:es :: sorted by date</span>
     </div>
 
     {% for post in site.posts %}
@@ -97,7 +97,7 @@ layout: default
         {% assign total = web_count | plus: pwn_count | plus: re_count | plus: net_count | plus: 1 %}
         <div class="sk-row">
           <div class="sk-top"><span>web</span><span class="pct">{{ web_count | times: 100 | divided_by: total }}%</span></div>
-          <div class="sk-bar"><div class="sk-fill" style="width:{{ web_count | times: 100 | divided_by: total }}%"></div></div>
+          <div class="sk-bar"><div class="sk-fill" style="width:{{ web_count | times: 100 | divided_by: total | append: '%' }}"></div></div>
         </div>
         <div class="sk-row">
           <div class="sk-top"><span>reverse_eng</span><span class="pct">{{ re_count | times: 100 | divided_by: total }}%</span></div>
@@ -135,4 +135,5 @@ layout: default
       count.textContent = visible + ' entr' + (visible === 1 ? 'y' : 'ies') + ' :: ' + suffix;
     }
   }
+  filterLang('es');
 </script>
