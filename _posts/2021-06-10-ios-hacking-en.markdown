@@ -2,7 +2,8 @@
 layout: post
 title:  "iOS Hacking - A Beginner's Guide to Hacking iOS Apps [2022 Edition]"
 date:   2022-03-13 19:25:00 +0100
-categories: ios hacking
+tags: [ios,hacking]
+lang: en
 published: true
 ---
 
