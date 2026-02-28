@@ -769,16 +769,6 @@ body::after {
     order: 2;
   }
 
-  /* index — colapsar también */
-  .main {
-    grid-template-columns: 1fr;
-  }
-  .content {
-    border-right: none;
-    border-bottom: 1px solid var(--dim);
-    padding: 16px !important;
-  }
-
   /* nav — ocultar F-keys en móvil */
   .nav-links a .num { display: none; }
   .nav-links a { padding: 5px 10px; font-size: 10px; }
@@ -838,5 +828,17 @@ body::after {
   .prose{
     max-width: 100% !important;
     overflow-x: hidden !important;
+  }
+}
+
+@media (max-width: 800px) {
+ /* index — colapsar también */
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    border-right: none;
+    border-bottom: 1px solid var(--dim);
+    padding: 16px !important;
   }
 }
