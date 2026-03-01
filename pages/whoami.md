@@ -28,11 +28,11 @@ permalink: /whoami/
             <span class="bio-k">last_commit&nbsp;</span>
             <span class="bio-v">{{ site.posts.first.title }}</span>
           </div>
-          <div class="bio-line"><span class="bio-k">0days&nbsp;</span><span class="bio-v fun">0&nbsp;<span style="color:var(--g2);font-size:10px">// not yet ;)</span></span></div>
+          <div class="bio-line"><span class="bio-k">0_days&nbsp;</span><span class="bio-v fun">0&nbsp;<span style="color:var(--g2);font-size:10px">// not yet ;)</span></span></div>
           <div class="bio-line"><span class="bio-k">coffee_dependency&nbsp;</span><span class="bio-v warn">{{ site.author.coffee }}</span></div>
           <div class="bio-line"><span class="bio-k">soundtrack&nbsp;</span><span class="bio-v">{{ site.author.soundtrack }}</span></div>
           <div class="bio-sep"></div>
-          <div class="bio-line"><span class="bio-k"></span><span class="bio-v" style="color:var(--g2)">red team operator. soy concha, entro.</span></div>
+          <div class="bio-line"><span class="bio-k"></span><span class="bio-v" style="color:var(--g2)">red team operator · h4ckthew0rld!</span></div>
         </div>
       </div>
     </div>
